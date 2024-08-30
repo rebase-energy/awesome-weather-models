@@ -1,0 +1,3 @@
+| Name | Description | Links |
+| :--- | :--- | :---: |
+|`GraphCast`|AI-based medium-range weather forecasting model. Pre-trained on ERA5 data from 1979 to 2017 and fine-tuned on HRES data from 2016 to 2021.|[[code]](https://github.com/google-deepmind/graphcast), [[paper]](https://arxiv.org/abs/2212.12794), [[blog]](https://deepmind.google/discover/blog/graphcast-ai-model-for-faster-and-more-accurate-global-weather-forecasting/)|
