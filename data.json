@@ -1,5 +1,29 @@
 [
   {
+  "name": "Aurora",
+  "organisation": "Microsoft",
+  "description": "AI-based medium-range weather forecasting model. Pre-trained on ERA5 data from 1979 to 2017 and fine-tuned on HRES data from 2016 to 2021.",
+  "architecture": "Graph neural network based on an \u201cencode-process-decode\u201d configuration.",
+  "training_data": "Pre-trained on ERA5 data from 1979 to 2017 and fine-tuned on HRES data from 2016 to 2021.",
+  "parameters": 36700000,
+  "loss_function": "MSE",
+  "internal_grid": "icosahedral",
+  "output_grid": "longitude-latitude",
+  "resolution": 0.1,
+  "level_type": "isobars",
+  "levels": 37,
+  "model_type": ["data-driven"],
+  "code_license": "MIT",
+  "weights_license": "MIT",
+  "published_year": 2024,
+  "links": {
+    "code": "https://github.com/microsoft/aurora",
+    "paper": "https://arxiv.org/abs/2405.13063",
+    "docs": "https://microsoft.github.io/aurora/intro.html",
+    "pypi": "https://pypi.org/project/microsoft-aurora/"
+  }
+},
+  {
   "name": "GraphCast",
   "organisation": "Google-DeepMind",
   "description": "AI-based medium-range weather forecasting model. Pre-trained on ERA5 data from 1979 to 2017 and fine-tuned on HRES data from 2016 to 2021.",

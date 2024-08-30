@@ -22,10 +22,10 @@ def validate_table(data):
 # Function to convert JSON data to a Markdown table
 def convert_table(json_data, mapping):
     # Extracting headers
-    headers = ["name", "description", "links"]
-    alignments = {"name": ":---", "description": ":---", "code_type": ":---:", "problem_type": ":---:", "model_type": ":---:", "energy_assets": ":---:", "scale": ":---:", "links": ":---:"}
+    headers = ["name", "description", "code_license", "links"]
+    alignments = {"name": ":---", "description": ":---", "code_license": ":---:", "problem_type": ":---:", "model_type": ":---:", "energy_assets": ":---:", "scale": ":---:", "links": ":---:"}
 
-    include_headers = ["name", "description", "links"]
+    include_headers = ["name", "description", "code_license", "links"]
     alignments = [alignments[header] for header in include_headers]
 
     display_headers = convert_string(include_headers)
@@ -39,6 +39,7 @@ def convert_table(json_data, mapping):
         row = "|"
         missing_keys = [key for key in headers if key not in entry.keys()]
         if missing_keys:
+            print(missing_keys)
             raise ValueError(f"Error in element at index {idx_entry}: Missing keys {missing_keys}")
         
         for header in include_headers:
