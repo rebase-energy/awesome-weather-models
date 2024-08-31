@@ -1,5 +1,27 @@
 [
   {
+  "name": "ArchesWeather",
+  "organisation": "INRIA",
+  "description": null,
+  "architecture": null,
+  "training_data": null,
+  "parameters": null,
+  "loss_function": null,
+  "internal_grid": "longitude-latitude",
+  "output_grid": "longitude-latitude",
+  "resolution": 0.25,
+  "level_type": "isobars",
+  "levels": 5,
+  "model_type": ["data-driven"],
+  "code_license": null,
+  "weights_license": null,
+  "published_year": 2024,
+  "links": {
+    "code": "https://github.com/gcouairon/ArchesWeather",
+    "paper": "https://arxiv.org/abs/2405.14527"
+  }
+},
+  {
   "name": "Aurora",
   "organisation": "Microsoft",
   "description": "AI-based medium-range weather forecasting model. Pre-trained on ERA5 data from 1979 to 2017 and fine-tuned on HRES data from 2016 to 2021.",
@@ -24,9 +46,53 @@
   }
 },
   {
+  "name": "FengWu",
+  "organisation": "OpenEarthLab",
+  "description": null,
+  "architecture": null,
+  "training_data": null,
+  "parameters": null,
+  "loss_function": null,
+  "internal_grid": "longitude-latitude",
+  "output_grid": "longitude-latitude",
+  "resolution": 0.25,
+  "level_type": "isobars",
+  "levels": 5,
+  "model_type": ["data-driven"],
+  "code_license": null,
+  "weights_license": null,
+  "published_year": 2023,
+  "links": {
+    "code": "https://github.com/OpenEarthLab/FengWu",
+    "paper": "https://arxiv.org/abs/2304.02948"
+  }
+},
+  {
+  "name": "FourCastNet",
+  "organisation": "Nvidia",
+  "description": null,
+  "architecture": null,
+  "training_data": null,
+  "parameters": null,
+  "loss_function": null,
+  "internal_grid": "longitude-latitude",
+  "output_grid": "longitude-latitude",
+  "resolution": 0.25,
+  "level_type": "isobars",
+  "levels": 5,
+  "model_type": ["data-driven"],
+  "code_license": "BSD 3-Clause",
+  "weights_license": "BSD 3-Clause",
+  "published_year": 2022,
+  "links": {
+    "code": "https://github.com/NVlabs/FourCastNet",
+    "paper": "https://arxiv.org/abs/2202.11214"
+  }
+},
+  {
   "name": "GraphCast",
   "organisation": "Google-DeepMind",
-  "description": "AI-based medium-range weather forecasting model. Pre-trained on ERA5 data from 1979 to 2017 and fine-tuned on HRES data from 2016 to 2021.",
+  "description": "Medium-range global weather forecasting with 3D neural networks.",
   "architecture": "Graph neural network based on an \u201cencode-process-decode\u201d configuration.",
   "training_data": "Pre-trained on ERA5 data from 1979 to 2017 and fine-tuned on HRES data from 2016 to 2021.",
   "parameters": 36700000,
@@ -44,6 +110,50 @@
     "code": "https://github.com/google-deepmind/graphcast",
     "paper": "https://arxiv.org/abs/2212.12794",
     "blog": "https://deepmind.google/discover/blog/graphcast-ai-model-for-faster-and-more-accurate-global-weather-forecasting/"
+  }
+},
+  {
+  "name": "Pangu-Weather",
+  "organisation": "Huawei",
+  "description": "AI-based medium-range weather forecasting model. Pre-trained on ERA5 data from 1979 to 2017 and fine-tuned on HRES data from 2016 to 2021.",
+  "architecture": null,
+  "training_data": null,
+  "parameters": null,
+  "loss_function": null,
+  "internal_grid": "longitude-latitude",
+  "output_grid": "longitude-latitude",
+  "resolution": 0.25,
+  "level_type": "isobars",
+  "levels": 13,
+  "model_type": ["data-driven"],
+  "code_license": "CC BY-NC-SA 4.0",
+  "weights_license": "CC BY-NC-SA 4.0",
+  "published_year": 2022,
+  "links": {
+    "code": "https://github.com/198808xc/Pangu-Weather",
+    "paper": "https://arxiv.org/abs/2211.02556"
+  }
+},
+  {
+  "name": "Pangu-Weather",
+  "organisation": "Huawei",
+  "description": "AI-based medium-range weather forecasting model. Pre-trained on ERA5 data from 1979 to 2017 and fine-tuned on HRES data from 2016 to 2021.",
+  "architecture": null,
+  "training_data": null,
+  "parameters": null,
+  "loss_function": null,
+  "internal_grid": "longitude-latitude",
+  "output_grid": "longitude-latitude",
+  "resolution": 0.25,
+  "level_type": "isobars",
+  "levels": 13,
+  "model_type": ["data-driven"],
+  "code_license": "CC BY-NC-SA 4.0",
+  "weights_license": "CC BY-NC-SA 4.0",
+  "published_year": 2022,
+  "links": {
+    "code": "https://github.com/tpys/FuXi",
+    "paper": "https://arxiv.org/abs/2211.02556"
   }
 }
 ]

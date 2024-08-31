@@ -44,11 +44,11 @@ def convert_table(json_data, mapping):
         
         for header in include_headers:
             if header == "name":
-                row = row + "`" + entry[header] + "`"
+                row = row + "`" + str(entry[header]) + "`"
             if header == "description":
-                row = row + entry[header]
+                row = row + str(entry[header])
             if header == "code_license":
-                row = row + entry[header]
+                row = row + str(entry[header])
             if header in mapping:
                 for idx_key, key in enumerate(entry[header]):
                     row = row + mapping[header][key]
