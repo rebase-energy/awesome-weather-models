@@ -22,10 +22,10 @@ def validate_table(data):
 # Function to convert JSON data to a Markdown table
 def convert_table(json_data, mapping):
     # Extracting headers
-    headers = ["name", "description", "code_license", "links"]
-    alignments = {"name": ":---", "description": ":---", "code_license": ":---:", "problem_type": ":---:", "model_type": ":---:", "energy_assets": ":---:", "scale": ":---:", "links": ":---:"}
+    headers = ["name", "description", "code", "links"]
+    alignments = {"name": ":---", "description": ":---", "code": ":---:", "problem_type": ":---:", "model_type": ":---:", "energy_assets": ":---:", "scale": ":---:", "links": ":---:"}
 
-    include_headers = ["name", "description", "code_license", "links"]
+    include_headers = ["name", "description", "code", "links"]
     alignments = [alignments[header] for header in include_headers]
 
     display_headers = convert_string(include_headers)
@@ -47,8 +47,9 @@ def convert_table(json_data, mapping):
                 row = row + "`" + str(entry[header]) + "`"
             if header == "description":
                 row = row + str(entry[header])
-            if header == "code_license":
-                row = row + str(entry[header])
+            if header == "code":
+                if "code_license" in entry[header].keys():
+                    row = row + str(entry[header]["code_license"])
             if header in mapping:
                 for idx_key, key in enumerate(entry[header]):
                     row = row + mapping[header][key]

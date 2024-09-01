@@ -1,5 +1,35 @@
 [
   {
+  "name": "AIFS",
+  "organisation": "ECMWF",
+  "description": "AIFS is an AI-based global weather forecasting model that uses a graph neural network (GNN) with a transformer-based processor to produce medium-range forecasts.",
+  "scale": "global",
+  "output_grid": "longitude-latitude",
+  "spatial_resolution": 0.25,
+  "temporal_resolution": 6,
+  "level_type": "isobars",
+  "levels": 13,
+  "model_type": "AI-based",
+  "forecast_range": "medium",
+  "code": {
+    "open_source": false
+  },
+  "weights": {
+    "open_source": true
+  },
+  "published_year": 2024,
+  "data_driven_details": {
+    "parameters": null,
+    "loss_function": "Area-weighted Mean Squared Error (MSE)",
+    "architecture": "Graph Neural Network (GNN) with a sliding window transformer processor, utilizing a pre-norm transformer with shifted window attention and GELU activation.",
+    "training_data": "Trained on ERA5 reanalysis data and ECMWF\u2019s operational NWP analyses, covering a wide range of atmospheric and surface variables."
+  },
+  "physics_driven_details": null,
+  "links": {
+    "paper": "https://arxiv.org/abs/2406.01465"
+  }
+},
+  {
   "name": "ArchesWeather",
   "organisation": "INRIA",
   "description": "AI-based weather forecasting model using a transformer architecture with Cross-Level Attention for efficient global weather prediction.",
@@ -11,9 +41,14 @@
   "level_type": "isobars",
   "levels": 13,
   "model_type": "AI-based",
-  "code_license": "MIT",
-  "open_weights": true,
-  "weights_license": "MIT",
+  "code": {
+    "open_source": true,
+    "license": "MIT"
+  },
+  "weights": {
+    "open_source": true,
+    "license": "MIT"
+  },
   "published_year": 2024,
   "data_driven_details": {
     "parameters": {
@@ -44,12 +79,17 @@
   "level_type": "isobars",
   "levels": 13,
   "model_type": "AI-based",
-  "code_license": "MIT",
-  "open_weights": true,
-  "weights_license": "MIT",
+  "code": {
+    "open_source": true,
+    "license": "MIT"
+  },
   "published_year": 2024,
   "data_driven_details": {
     "parameters": 1300000000,
+    "code": {
+      "open_source": true,
+      "license": "MIT"
+    },
     "loss_function": "Mean Absolute Error (MAE)",
     "architecture": "3D Swin Transformer with 3D Perceiver-based encoders and decoders that uses an icosahedral internal grid.",
     "training_data": "Pre-trained on a mixture of ERA5, CMCC, IFS-HR, HRES Forecasts, GFS Analysis, and GFS Forecasts data."
@@ -74,17 +114,21 @@
   "levels": 7,
   "model_type": "AI-based",
   "forecast_range": ["short", "medium", "long", "climate"],
-  "code_license": "MIT",
-  "open_weights": false,
-  "weights_license": null,
   "published_year": 2023,
+  "code": {
+    "open_source": true,
+    "license": "MIT"
+  },
   "data_driven_details": {
     "parameters": null,
+    "weights": {
+      "open_source": false,
+      "license": null
+    },
     "loss_function": "Latitude-weighted Mean Squared Error (MSE)",
     "architecture": "Vision Transformer (ViT) with variable tokenization and aggregation",
     "training_data": "Pretrained on CMIP6 climate datasets and fine-tuned on ERA5 data for weather forecasting and climate tasks."
   },
-  "physics_driven_details": null,
   "links": {
     "code": "https://github.com/microsoft/ClimaX",
     "paper": "https://arxiv.org/abs/2301.10343",
@@ -103,12 +147,19 @@
   "level_type": "isobars",
   "levels": 37,
   "model_type": "AI-based",
-  "code_license": null,
+  "code": {
+    "open_source": true,
+    "license": null
+  },
   "open_weights": true,
-  "weights_license": null,
+  "license": null,
   "published_year": 2023,
   "data_driven_details": {
     "parameters": null,
+    "weights": {
+      "open_source": true,
+      "license": null
+    },
     "loss_function": "Uncertainty-weighted multi-task loss",
     "architecture": "Multi-modal encoder-decoder with cross-modal Transformer and replay buffer mechanism",
     "training_data": "Trained on ERA5 data from 1979 to 2018."
@@ -131,12 +182,17 @@
   "level_type": "isobars",
   "levels": 5,
   "model_type": "AI-based",
-  "code_license": "BSD 3-Clause",
-  "open_weights": true,
-  "weights_license": "BSD 3-Clause",
+  "code": {
+    "open_source": true,
+    "license": "BSD 3-Clause"
+  },
   "published_year": 2022,
   "data_driven_details": {
     "parameters": null,
+    "weights": {
+      "open_source": true,
+      "license": "BSD 3-Clause"
+    },
     "loss_function": "Root Mean Square Error (RMSE) and Anomaly Correlation Coefficient (ACC)",
     "architecture": "Adaptive Fourier Neural Operator (AFNO) with Vision Transformer (ViT) backbone.",
     "training_data": "Trained on ERA5 data from 1979 to 2018."
@@ -159,12 +215,17 @@
   "level_type": "isobars",
   "levels": 37,
   "model_type": "AI-based",
-  "code_license": "apache-2.0",
-  "open_weights": true,
-  "weights_license": "CC BY-NC-SA 4.0",
+  "code": {
+    "open_source": true,
+    "license": "APACHE-2.0"
+  },
   "published_year": 2023,
   "data_driven_details": {
     "parameters": 36700000,
+    "weights": {
+      "open_source": true,
+      "license": "CC BY-NC-SA 4.0"
+    },
     "loss_function": "Mean Squared Error (MSE)",
     "architecture": "Graph Neural Network (GNN) in an encode-process-decode configuration with a multi-mesh graph representation.",
     "training_data": "Trained on ERA5 data from 1979 to 2017, covering 227 weather variables across 37 pressure levels."
@@ -188,12 +249,17 @@
   "level_type": "isobars",
   "levels": 13,
   "model_type": "AI-based",
-  "code_license": "CC BY-NC-SA 4.0",
-  "open_weights": true,
-  "weights_license": "CC BY-NC-SA 4.0",
+  "code": {
+    "open_source": true,
+    "license": "CC BY-NC-SA 4.0"
+  },
   "published_year": 2022,
   "data_driven_details": {
     "parameters": 256000000,
+    "weights": {
+      "open_source": true,
+      "license": "CC BY-NC-SA 4.0"
+    },
     "loss_function": "Latitude-weighted Root Mean Square Error (RMSE) and Anomaly Correlation Coefficient (ACC)",
     "architecture": "3D Earth-specific transformer (3DEST) with hierarchical temporal aggregation",
     "training_data": "Trained on 43 years of global hourly data from the ERA5 reanalysis dataset, focusing on five upper-air atmospheric variables and four surface weather variables across 13 pressure levels."
