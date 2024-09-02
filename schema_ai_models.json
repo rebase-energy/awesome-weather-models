@@ -1,0 +1,225 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"type": "object",
+  "properties": {
+    "name": {
+			"type": "string",
+			"description": "Name of the model.",
+			"minLength": 1,
+			"maxLength": 25
+		},
+		"organisation": {
+			"type": "string",
+			"description": "Name of the organisation that developed the model.",
+			"minLength": 1,
+			"maxLength": 25
+		},
+		"description": {
+			"type": "string",
+			"description": "Description of the model.",
+			"minLength": 1,
+			"maxLength": 200
+		},
+		"training_data": {
+			"type": "string",
+			"description": "Description of the data used to train the model.",
+			"minLength": 1,
+			"maxLength": 200
+		},
+		"architecture": {
+			"type": "string",
+			"description": "Description of the model architecture.",
+			"minLength": 1,
+			"maxLength": 200
+		},
+		"loss_function": {
+			"type": "string",
+			"description": "Loss function used for training the model.",
+			"minLength": 1,
+			"maxLength": 100
+		},
+		"scale": {
+			"type": "string",
+			"description": "Geographical scale of the model.",
+			"enum": ["global", "regional", "local"]
+		},
+		"output_grid": {
+			"type": "string",
+			"description": "Type of output grid used by the model.",
+			"enum": ["longitude-latitude", "icosahedral", "cubed-sphere"]
+		},
+		"spatial_resolution": {
+			"type": "number",
+			"description": "Spatial resolution of the model in degrees.",
+			"minimum": 0
+		},
+		"forecast_range": {
+			"type": "array",
+			"description": "Forecast range of the model.",
+			"items": {
+				"type": "string",
+				"enum": ["nowcasting", "short", "medium", "seasonal", "climate"]
+			},
+			"minItems": 1,
+			"uniqueItems": true
+		},
+		"temporal_resolution": {
+			"type": "number",
+			"description": "Temporal resolution of the model in hours.",
+			"minimum": 0
+		},
+		"output_levels": {
+			"type": "array",
+			"description": "Specifies which level types are produced as outputs by the model.",
+			"items": {
+				"type": "string",
+				"enum": ["surface_level", "pressure_level", "height_level"]
+		  },
+			"minItems": 1,
+			"uniqueItems": true
+    },
+		"pressure_levels": {
+			"type": "array",
+			"items": {
+				"type": "number",
+				"minimum": 0
+			},
+			"minItems": 1,
+			"description": "List of pressure levels in hPa."
+		},
+		"height_levels": {
+			"type": "array",
+			"items": {
+				"type": "number",
+				"minimum": 0
+			},
+			"minItems": 1,
+			"description": "List of height levels in meters."
+		},
+		"model_type": {
+			"type": "string",
+			"description": "Type of model used for weather or climate forecasting.",
+			"enum": ["AI-based", "physics-based", "hybrid"]
+		},
+		"open_data": {
+			"type": "boolean",
+			"description": "Whether the model output data is provided as open data."
+		},
+		"data_license": {
+			"type": "string",
+			"description": "License under which the model output data is provided."
+		},
+		"open_source": {
+			"type": "boolean",
+			"description": "Whether the model source code is open source."
+		},
+		"source_license": {
+			"type": "string",
+			"description": "License under which the model source code is provided."
+		},
+		"open_weights": {
+			"type": "boolean",
+			"description": "Whether the model weights are provided as open data."
+		},
+		"weights_license": {
+			"type": "string",
+			"description": "License under which the model weights are provided."
+		},
+		"parameters": {
+			"type": ["integer", "null"],
+			"mininum": 0
+		},
+		"published_year": {
+			"type": "number",
+			"description": "Year in which the model was published."
+		},
+		"links": {
+			"type": "object",
+			"properties": {
+				"paper": {
+					"type": "string",
+					"format": "uri",
+					"description": "Link to the paper describing the model."
+				},
+				"code": {
+					"type": "string",
+					"format": "uri",
+					"description": "Link to the code base."
+				},
+				"docs": {
+					"type": "string",
+					"format": "uri",
+					"description": "Documentation page of the model."
+				},
+				"page": {
+					"type": "string",
+					"format": "uri",
+					"description": "Link to webpage or blog describing the model. "
+				}
+			}
+		}
+  },
+	"required": [
+		"name",
+		"organisation",
+		"description",
+		"training_data",
+		"architecture",
+		"loss_function",
+		"scale",
+		"output_grid",
+		"spatial_resolution",
+		"forecast_range",
+		"temporal_resolution",
+		"output_levels",
+		"model_type",
+		"open_data",
+		"open_source",
+		"open_weights",
+		"parameters",
+		"published_year"
+	],
+	"additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": { "output_levels": { "contains": { "const": "pressure_level" } } }
+      },
+      "then": {
+        "required": ["pressure_levels"]
+      }
+    },
+    {
+      "if": {
+        "properties": { "output_levels": { "contains": { "const": "height_level" } } }
+      },
+      "then": {
+        "required": ["height_levels"]
+      }
+    },
+		{
+      "if": {
+        "properties": { "open_data": { "const": true } }
+      },
+      "then": {
+        "required": ["data_license"]
+      }
+    },
+		{
+      "if": {
+        "properties": { "open_source": { "const": true } }
+      },
+      "then": {
+        "required": ["source_license"]
+      }
+    },
+		{
+      "if": {
+        "properties": { "open_weights": { "const": true } }
+      },
+      "then": {
+        "required": ["weights_license"]
+      }
+    }
+  ]
+}

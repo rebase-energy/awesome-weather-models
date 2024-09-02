@@ -3,30 +3,26 @@
   "name": "AIFS",
   "organisation": "ECMWF",
   "description": "AIFS is an AI-based global weather forecasting model that uses a graph neural network (GNN) with a transformer-based processor to produce medium-range forecasts.",
+  "training_data": "Trained on ERA5 reanalysis data and ECMWF\u2019s operational NWP analyses, covering a wide range of atmospheric and surface variables.",
+  "architecture": "Graph Neural Network (GNN) with a sliding window transformer processor, utilizing a pre-norm transformer with shifted window attention and GELU activation.",
+  "loss_function": "Area-weighted Mean Squared Error (MSE)",
   "scale": "global",
   "output_grid": "longitude-latitude",
   "spatial_resolution": 0.25,
   "temporal_resolution": 6,
-  "level_type": "isobars",
-  "levels": 13,
+  "output_levels": ["surface_level", "pressure_level"],
+  "pressure_levels": [50, 100, 150, 200, 250, 300, 400, 500, 600, 700, 850, 925, 1000],
   "model_type": "AI-based",
-  "forecast_range": "medium",
-  "code": {
-    "open_source": false
-  },
-  "weights": {
-    "open_source": true
-  },
+  "forecast_range": ["short", "medium"],
+  "open_data": true,
+  "data_license": "CC BY 4.0",
+  "open_source": false,
+  "open_weights": false,
   "published_year": 2024,
-  "data_driven_details": {
-    "parameters": null,
-    "loss_function": "Area-weighted Mean Squared Error (MSE)",
-    "architecture": "Graph Neural Network (GNN) with a sliding window transformer processor, utilizing a pre-norm transformer with shifted window attention and GELU activation.",
-    "training_data": "Trained on ERA5 reanalysis data and ECMWF\u2019s operational NWP analyses, covering a wide range of atmospheric and surface variables."
-  },
-  "physics_driven_details": null,
+  "parameters": null,
   "links": {
-    "paper": "https://arxiv.org/abs/2406.01465"
+    "paper": "https://arxiv.org/abs/2406.01465",
+    "website": "https://www.ecmwf.int/en/forecasts/dataset/aifs-machine-learning-data"
   }
 },
   {
@@ -38,7 +34,7 @@
   "spatial_resolution": 1.5,
   "forecast_range": ["short", "medium"],
   "temporal_resolution": 6,
-  "level_type": "isobars",
+  "output_levels": [],
   "levels": 13,
   "model_type": "AI-based",
   "code": {
@@ -115,10 +111,7 @@
   "model_type": "AI-based",
   "forecast_range": ["short", "medium", "long", "climate"],
   "published_year": 2023,
-  "code": {
-    "open_source": true,
-    "license": "MIT"
-  },
+  "open_source": "MIT",
   "data_driven_details": {
     "parameters": null,
     "weights": {
@@ -147,19 +140,16 @@
   "level_type": "isobars",
   "levels": 37,
   "model_type": "AI-based",
-  "code": {
-    "open_source": true,
-    "license": null
-  },
+  "open_data": "MIT",
+  "data_license": "MIT",
+  "open_source": "MIT",
+  "source_license": "MIT",
   "open_weights": true,
   "license": null,
   "published_year": 2023,
   "data_driven_details": {
     "parameters": null,
-    "weights": {
-      "open_source": true,
-      "license": null
-    },
+    "open_weights": "No License",
     "loss_function": "Uncertainty-weighted multi-task loss",
     "architecture": "Multi-modal encoder-decoder with cross-modal Transformer and replay buffer mechanism",
     "training_data": "Trained on ERA5 data from 1979 to 2018."

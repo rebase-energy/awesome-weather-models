@@ -1,4 +1,6 @@
 import json
+import jsonschema
+from jsonschema import validate
 
 def check_fields(data, fields):
     print("Checking that all fields are present in data.")
@@ -12,17 +14,26 @@ def sort_alphabetically(data):
     data.sort(key=lambda x: x["name"].lower())
     return data
 
-def validate_table(data):
-    fields = ["name", "description", "links"]
+def validate_table(data, schema):
+    for entry in data:
+        try:
+            validate(instance=entry, schema=schema)
+            print("JSON data is valid.")
+        except jsonschema.exceptions.ValidationError as e:
+            # Print the relevant information
+            if 'name' in e.instance:
+                print(f"JSON validation error in item with name: {e.instance['name']}")
+            # Re-raise the exception to stop the execution
+            raise
 
-    check_fields(data, fields)
+    #check_fields(data, fields)
     data = sort_alphabetically(data)
     return data
 
 # Function to convert JSON data to a Markdown table
-def convert_table(json_data, mapping):
+def convert_table(json_data, mapping, table_name):
     # Extracting headers
-    headers = ["name", "description", "code", "links"]
+    headers = ["name", "description", "links"]
     alignments = {"name": ":---", "description": ":---", "code": ":---:", "problem_type": ":---:", "model_type": ":---:", "energy_assets": ":---:", "scale": ":---:", "links": ":---:"}
 
     include_headers = ["name", "description", "code", "links"]
@@ -47,9 +58,6 @@ def convert_table(json_data, mapping):
                 row = row + "`" + str(entry[header]) + "`"
             if header == "description":
                 row = row + str(entry[header])
-            if header == "code":
-                if "code_license" in entry[header].keys():
-                    row = row + str(entry[header]["code_license"])
             if header in mapping:
                 for idx_key, key in enumerate(entry[header]):
                     row = row + mapping[header][key]
@@ -66,9 +74,8 @@ def convert_table(json_data, mapping):
     markdown_table = '\n'.join([header_row, separator_row] + rows)
 
     # Save the Markdown table to a file
-    with open("model_table.md", 'w') as file:
+    with open(table_name, 'w') as file:
         file.write(markdown_table)
-
 
 def insert_table(source_file="model_table.md", read_file="README_no_table.md", target_file="README.md", placeholder="<!-- table_placeholder -->"):
     with open(source_file, 'r') as f:
@@ -118,22 +125,25 @@ def custom_json_dump(data, indent=2):
 
 if __name__ == "__main__":
     # Read JSON data from a file
-    with open('data.json', 'r') as f:
-        data = json.load(f)
+    with open('data_ai_models.json', 'r') as f:
+        data_ai_models = json.load(f)
+
+    with open('schema_ai_models.json', 'r') as f:
+        schema_ai_models = json.load(f)
 
     with open('mapping.json', 'r') as f:
         mapping = json.load(f)
 
     # Validate and clean JSON data
-    data = validate_table(data)
+    data_ai_models = validate_table(data_ai_models, schema_ai_models)
 
     # Write custom JSON file
-    custom_json_string = custom_json_dump(data, indent=2)
-    with open('data.json', 'w') as f:
-        f.write(custom_json_string)
+    ai_models_json = custom_json_dump(ai_models, indent=2)
+    with open('ai_models.json', 'w') as f:
+        f.write(ai_models_json)
 
     # Convert JSON to Markdown table
-    convert_table(data, mapping)
+    convert_table(ai_models, mapping, "ai_models.md")
 
     # Insert the Markdown table into a README file
     insert_table()
