@@ -2,17 +2,22 @@ import json
 import jsonschema
 from jsonschema import validate
 
-def check_fields(data, fields):
-    print("Checking that all fields are present in data.")
-    for i, d in enumerate(data): 
-        for field in fields: 
-            if field not in d.keys():
-                print("Field {} not found in data[{}]".format(field, i))
-
-def sort_alphabetically(data): 
-    print("Sorting data by name alphabetically.")
+def sort_items_alphabetically(data): 
+    print("Sorting items by name alphabetically.")
     data.sort(key=lambda x: x["name"].lower())
     return data
+
+def sort_keys(data, schema):
+    print("Sorting keys by predefined order.")
+    order = list(schema["properties"].keys())
+    # Create a new dictionary with keys in the specified order
+    sorted_data = {key: data[key] for key in order if key in data}
+    # Add any keys not in the order to the end, sorted alphabetically
+    remaining_keys = sorted(set(data.keys()) - set(order))
+    for key in remaining_keys:
+        sorted_data[key] = data[key]
+
+    return sorted_data
 
 def validate_table(data, schema):
     for entry in data:
@@ -27,7 +32,8 @@ def validate_table(data, schema):
             raise
 
     #check_fields(data, fields)
-    data = sort_alphabetically(data)
+
+    
     return data
 
 # Function to convert JSON data to a Markdown table
@@ -89,6 +95,8 @@ def insert_table(source_file="model_table.md", read_file="README_no_table.md", t
     with open(target_file, 'w') as file: 
         file.write(new_content)
 
+    print("Markdown table inserted into the README.")
+
 def convert_string(old_list): 
     new_list = []
     for old_string in old_list:
@@ -98,7 +106,7 @@ def convert_string(old_list):
 
     return new_list
 
-def custom_json_dump(data, indent=2):
+def write_custom_json(data, name, indent=2):
     def format_dict(d, level=1):
         indent_space = ' ' * (level * indent)
         items = []
@@ -113,14 +121,18 @@ def custom_json_dump(data, indent=2):
             else:
                 # Other types use the default json encoding
                 items.append(f'{indent_space}"{key}": {json.dumps(value)}')
-        return '{\n' + ',\n'.join(items) + f'\n{" " * ((level - 1) * indent)}}}'
+        
+        formatted_dict = '{\n' + ',\n'.join(items) + f'\n{" " * ((level - 1) * indent)}}}'
+        return formatted_dict
     
     formatted_list = []
     for item in data:
         formatted_list.append(format_dict(item))
     
-    # Combine formatted dictionaries into a single line for the top-level list
-    return '[\n  ' + ',\n  '.join(formatted_list) + '\n]'
+    output_json = '[\n  ' + ',\n  '.join(formatted_list) + '\n]'
+
+    with open(name, 'w') as f:
+        f.write(output_json)
 
 
 if __name__ == "__main__":
@@ -135,18 +147,15 @@ if __name__ == "__main__":
         mapping = json.load(f)
 
     # Validate and clean JSON data
-    data_ai_models = validate_table(data_ai_models, schema_ai_models)
+    validate_table(data_ai_models, schema_ai_models)
+    data_ai_models = sort_items_alphabetically(data_ai_models)
+    data_ai_models = sort_keys(data_ai_models, schema_ai_models)
 
     # Write custom JSON file
-    ai_models_json = custom_json_dump(ai_models, indent=2)
-    with open('ai_models.json', 'w') as f:
-        f.write(ai_models_json)
+    ai_models_json = write_custom_json(data_ai_models, "ai_models.json", indent=2)
 
     # Convert JSON to Markdown table
-    convert_table(ai_models, mapping, "ai_models.md")
+    convert_table(data_ai_models, mapping, "ai_models.md")
 
     # Insert the Markdown table into a README file
     insert_table()
-
-    # Print success message
-    print("Markdown table inserted into the README.")
