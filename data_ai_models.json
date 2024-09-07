@@ -1,263 +1,340 @@
 [
   {
-  "name": "AIFS",
-  "organisation": "ECMWF",
-  "description": "AIFS is an AI-based global weather forecasting model that uses a graph neural network (GNN) with a transformer-based processor to produce medium-range forecasts.",
-  "training_data": "Trained on ERA5 reanalysis data and ECMWF\u2019s operational NWP analyses, covering a wide range of atmospheric and surface variables.",
-  "architecture": "Graph Neural Network (GNN) with a sliding window transformer processor, utilizing a pre-norm transformer with shifted window attention and GELU activation.",
-  "loss_function": "Area-weighted Mean Squared Error (MSE)",
-  "scale": "global",
-  "output_grid": "longitude-latitude",
-  "spatial_resolution": 0.25,
-  "temporal_resolution": 6,
-  "output_levels": ["surface_level", "pressure_level"],
-  "pressure_levels": [50, 100, 150, 200, 250, 300, 400, 500, 600, 700, 850, 925, 1000],
-  "model_type": "AI-based",
-  "forecast_range": ["short", "medium"],
-  "open_data": true,
-  "data_license": "CC BY 4.0",
-  "open_source": false,
-  "open_weights": false,
-  "published_year": 2024,
-  "parameters": null,
-  "links": {
-    "paper": "https://arxiv.org/abs/2406.01465",
-    "website": "https://www.ecmwf.int/en/forecasts/dataset/aifs-machine-learning-data"
-  }
-},
+    "name": "AIFS",
+    "organisation": "ECMWF",
+    "description": "AIFS is an AI-based global weather forecasting model that uses a graph neural network (GNN) with a transformer-based processor to produce medium-range forecasts.",
+    "training_data": "Trained on ERA5 reanalysis data and ECMWF\u2019s operational NWP analyses, covering a wide range of atmospheric and surface variables.",
+    "architecture": "Graph Neural Network (GNN) with a sliding window transformer processor, utilizing a pre-norm transformer with shifted window attention and GELU activation.",
+    "loss_function": "Area-weighted Mean Squared Error (MSE)",
+    "scale": "global",
+    "output_grid": "longitude-latitude",
+    "spatial_resolution": 0.25,
+    "resolution_unit": "degrees",
+    "forecast_range": ["short", "medium"],
+    "temporal_resolution": 6,
+    "output_levels": ["surface_level", "pressure_level"],
+    "pressure_levels": [50, 100, 150, 200, 250, 300, 400, 500, 600, 700, 850, 925, 1000],
+    "model_type": "AI-based",
+    "operational_data": true,
+    "data_license": "CC BY 4.0",
+    "open_source": false,
+    "open_weights": false,
+    "published_year": 2024,
+    "parameters": null,
+    "links": {
+      "paper": "https://arxiv.org/abs/2406.01465",
+      "website": "https://www.ecmwf.int/en/forecasts/dataset/aifs-machine-learning-data"
+    }
+  },
   {
-  "name": "ArchesWeather",
-  "organisation": "INRIA",
-  "description": "AI-based weather forecasting model using a transformer architecture with Cross-Level Attention for efficient global weather prediction.",
-  "scale": "global",
-  "output_grid": "longitude-latitude",
-  "spatial_resolution": 1.5,
-  "forecast_range": ["short", "medium"],
-  "temporal_resolution": 6,
-  "output_levels": [],
-  "levels": 13,
-  "model_type": "AI-based",
-  "code": {
-    "open_source": true,
-    "license": "MIT"
-  },
-  "weights": {
-    "open_source": true,
-    "license": "MIT"
-  },
-  "published_year": 2024,
-  "data_driven_details": {
-    "parameters": {
-      "ARCHESWEATHER-S": 49000000,
-      "ARCHESWEATHER-M": 89000000,
-      "ARCHESWEATHER-L": 164000000
-    },
-    "loss_function": "Root Mean Square Error (RMSE)",
+    "name": "ARCHESWEATHER-S",
+    "organisation": "INRIA",
+    "description": "AI-based weather forecasting model using a transformer architecture with Cross-Level Attention for efficient global weather prediction.",
+    "training_data": "Trained on ERA5 data regridded to 1.5\u00ba resolution from 1979 to 2018; fine-tuned on 2007-2018 data.",
     "architecture": "3D Swin U-Net transformer with Cross-Level Attention and adaptive Layer Normalization.",
-    "training_data": "Trained on ERA5 data regridded to 1.5\u00ba resolution from 1979 to 2018; fine-tuned on 2007-2018 data."
-  },
-  "physics_driven_details": null,
-  "links": {
-    "code": "https://github.com/gcouairon/ArchesWeather",
-    "paper": "https://arxiv.org/abs/2405.14527"
-  }
-},
-  {
-  "name": "Aurora",
-  "organisation": "Microsoft",
-  "description": "Aurora is an AI-based model that generates global weather and air pollution forecasts. It utilizes 3D Swin Transformer architecture and is pre-trained on diverse atmospheric data.",
-  "scale": "global",
-  "internal_grid": "icosahedral",
-  "output_grid": "longitude-latitude",
-  "spatial_resolution": 0.1,
-  "forecast_range": ["short", "medium"],
-  "temporal_resolution": 6,
-  "level_type": "isobars",
-  "levels": 13,
-  "model_type": "AI-based",
-  "code": {
+    "loss_function": "Root Mean Square Error (RMSE)",
+    "scale": "global",
+    "output_grid": "longitude-latitude",
+    "spatial_resolution": 1.5,
+    "resolution_unit": "degrees",
+    "forecast_range": ["short", "medium"],
+    "temporal_resolution": 6,
+    "output_levels": ["surface_level", "pressure_level"],
+    "pressure_levels": [50, 100, 150, 200, 250, 300, 400, 500, 600, 700, 850, 925, 1000],
+    "model_type": "AI-based",
+    "operational_data": false,
     "open_source": true,
-    "license": "MIT"
+    "source_license": "MIT",
+    "open_weights": true,
+    "weights_license": "MIT",
+    "published_year": 2024,
+    "parameters": 49000000,
+    "links": {
+      "code": "https://github.com/gcouairon/ArchesWeather",
+      "paper": "https://arxiv.org/abs/2405.14527",
+      "website": "https://www.ecmwf.int/en/forecasts/dataset/aifs-machine-learning-data"
+    }
   },
-  "published_year": 2024,
-  "data_driven_details": {
-    "parameters": 1300000000,
-    "code": {
-      "open_source": true,
-      "license": "MIT"
-    },
-    "loss_function": "Mean Absolute Error (MAE)",
+  {
+    "name": "ARCHESWEATHER-M",
+    "organisation": "INRIA",
+    "description": "AI-based weather forecasting model using a transformer architecture with Cross-Level Attention for efficient global weather prediction.",
+    "training_data": "Trained on ERA5 data regridded to 1.5\u00ba resolution from 1979 to 2018; fine-tuned on 2007-2018 data.",
+    "architecture": "3D Swin U-Net transformer with Cross-Level Attention and adaptive Layer Normalization.",
+    "loss_function": "Root Mean Square Error (RMSE)",
+    "scale": "global",
+    "output_grid": "longitude-latitude",
+    "spatial_resolution": 1.5,
+    "resolution_unit": "degrees",
+    "forecast_range": ["short", "medium"],
+    "temporal_resolution": 6,
+    "output_levels": ["surface_level", "pressure_level"],
+    "pressure_levels": [50, 100, 150, 200, 250, 300, 400, 500, 600, 700, 850, 925, 1000],
+    "model_type": "AI-based",
+    "operational_data": false,
+    "open_source": true,
+    "source_license": "MIT",
+    "open_weights": true,
+    "weights_license": "MIT",
+    "published_year": 2024,
+    "parameters": 89000000,
+    "links": {
+      "code": "https://github.com/gcouairon/ArchesWeather",
+      "paper": "https://arxiv.org/abs/2405.14527",
+      "website": "https://www.ecmwf.int/en/forecasts/dataset/aifs-machine-learning-data"
+    }
+  },
+  {
+    "name": "ARCHESWEATHER-L",
+    "organisation": "INRIA",
+    "description": "AI-based weather forecasting model using a transformer architecture with Cross-Level Attention for efficient global weather prediction.",
+    "training_data": "Trained on ERA5 data regridded to 1.5\u00ba resolution from 1979 to 2018; fine-tuned on 2007-2018 data.",
+    "architecture": "3D Swin U-Net transformer with Cross-Level Attention and adaptive Layer Normalization.",
+    "loss_function": "Root Mean Square Error (RMSE)",
+    "scale": "global",
+    "output_grid": "longitude-latitude",
+    "spatial_resolution": 1.5,
+    "resolution_unit": "degrees",
+    "forecast_range": ["short", "medium"],
+    "temporal_resolution": 6,
+    "output_levels": ["surface_level", "pressure_level"],
+    "pressure_levels": [50, 100, 150, 200, 250, 300, 400, 500, 600, 700, 850, 925, 1000],
+    "model_type": "AI-based",
+    "operational_data": false,
+    "open_source": true,
+    "source_license": "MIT",
+    "open_weights": true,
+    "weights_license": "MIT",
+    "published_year": 2024,
+    "parameters": 164000000,
+    "links": {
+      "code": "https://github.com/gcouairon/ArchesWeather",
+      "paper": "https://arxiv.org/abs/2405.14527",
+      "website": "https://www.ecmwf.int/en/forecasts/dataset/aifs-machine-learning-data"
+    }
+  },
+  {
+    "name": "Aurora",
+    "organisation": "Microsoft",
+    "description": "Aurora is an AI-based model that generates global weather and air pollution forecasts. It utilizes 3D Swin Transformer architecture and is pre-trained on diverse atmospheric data.",
+    "training_data": "Pre-trained on a mixture of ERA5, CMCC, IFS-HR, HRES Forecasts, GFS Analysis, and GFS Forecasts data.",
     "architecture": "3D Swin Transformer with 3D Perceiver-based encoders and decoders that uses an icosahedral internal grid.",
-    "training_data": "Pre-trained on a mixture of ERA5, CMCC, IFS-HR, HRES Forecasts, GFS Analysis, and GFS Forecasts data."
+    "loss_function": "Mean Absolute Error (MAE)",
+    "scale": "global",
+    "output_grid": "longitude-latitude",
+    "spatial_resolution": 0.1,
+    "resolution_unit": "degrees",
+    "forecast_range": ["short", "medium"],
+    "temporal_resolution": 6,
+    "output_levels": ["surface_level", "pressure_level"],
+    "pressure_levels": [50, 100, 150, 200, 250, 300, 400, 500, 600, 700, 850, 925, 1000],
+    "model_type": "AI-based",
+    "operational_data": false,
+    "open_source": true,
+    "source_license": "MIT",
+    "open_weights": true,
+    "weights_license": "MIT",
+    "published_year": 2024,
+    "parameters": 1300000000,
+    "links": {
+      "code": "https://github.com/microsoft/aurora",
+      "paper": "https://arxiv.org/abs/2405.13063",
+      "docs": "https://microsoft.github.io/aurora/intro.html",
+      "pypi": "https://pypi.org/project/microsoft-aurora/"
+    }
   },
-  "physics_driven_details": null,
-  "links": {
-    "code": "https://github.com/microsoft/aurora",
-    "paper": "https://arxiv.org/abs/2405.13063",
-    "docs": "https://microsoft.github.io/aurora/intro.html",
-    "pypi": "https://pypi.org/project/microsoft-aurora/"
-  }
-},
   {
-  "name": "ClimaX",
-  "organisation": "Microsoft",
-  "description": "A foundation model for weather forecasting to and climate projections, using a vision transformer architecture.",
-  "scale": "global",
-  "output_grid": "longitude-latitude",
-  "spatial_resolution": [5.625, 1.40625],
-  "temporal_resolution": 6,
-  "level_type": "isobars",
-  "levels": 7,
-  "model_type": "AI-based",
-  "forecast_range": ["short", "medium", "long", "climate"],
-  "published_year": 2023,
-  "open_source": "MIT",
-  "data_driven_details": {
-    "parameters": null,
-    "weights": {
-      "open_source": false,
-      "license": null
-    },
-    "loss_function": "Latitude-weighted Mean Squared Error (MSE)",
+    "name": "ClimaX-L",
+    "organisation": "Microsoft",
+    "description": "ClimaX low resolution foundation model for weather forecasting to and climate projections, using a vision transformer architecture.",
+    "training_data": "Pretrained on CMIP6 climate datasets and fine-tuned on ERA5 data for weather forecasting and climate tasks.",
     "architecture": "Vision Transformer (ViT) with variable tokenization and aggregation",
-    "training_data": "Pretrained on CMIP6 climate datasets and fine-tuned on ERA5 data for weather forecasting and climate tasks."
-  },
-  "links": {
-    "code": "https://github.com/microsoft/ClimaX",
-    "paper": "https://arxiv.org/abs/2301.10343",
-    "docs": "https://microsoft.github.io/climax/intro.html"
-  }
-},
-  {
-  "name": "FengWu",
-  "organisation": "OpenEarthLab",
-  "description": "AI-based global medium-range weather forecasting system using a multi-modal and multi-task learning approach, trained on ERA5 data to predict atmospheric conditions with 0.25\u00b0 resolution.",
-  "scale": "global",
-  "output_grid": "longitude-latitude",
-  "spatial_resolution": 0.25,
-  "forecast_range": ["short", "medium"],
-  "temporal_resolution": 6,
-  "level_type": "isobars",
-  "levels": 37,
-  "model_type": "AI-based",
-  "open_data": "MIT",
-  "data_license": "MIT",
-  "open_source": "MIT",
-  "source_license": "MIT",
-  "open_weights": true,
-  "license": null,
-  "published_year": 2023,
-  "data_driven_details": {
+    "loss_function": "Latitude-weighted Mean Squared Error (MSE)",
+    "scale": "global",
+    "output_grid": "longitude-latitude",
+    "spatial_resolution": 5.625,
+    "resolution_unit": "degrees",
+    "forecast_range": ["short", "medium", "seasonal", "climate"],
+    "temporal_resolution": 6,
+    "output_levels": ["surface_level", "pressure_level"],
+    "pressure_levels": [50, 100, 150, 200, 250, 300, 400, 500, 600, 700, 850, 925, 1000],
+    "model_type": "AI-based",
+    "operational_data": false,
+    "open_source": true,
+    "source_license": "MIT",
+    "open_weights": false,
+    "published_year": 2023,
     "parameters": null,
-    "open_weights": "No License",
-    "loss_function": "Uncertainty-weighted multi-task loss",
+    "links": {
+      "code": "https://github.com/microsoft/ClimaX",
+      "paper": "https://arxiv.org/abs/2301.10343",
+      "docs": "https://microsoft.github.io/climax/intro.html"
+    }
+  },
+  {
+    "name": "ClimaX-H",
+    "organisation": "Microsoft",
+    "description": "ClimaX high resolution foundation model for weather forecasting to and climate projections, using a vision transformer architecture.",
+    "training_data": "Pretrained on CMIP6 climate datasets and fine-tuned on ERA5 data for weather forecasting and climate tasks.",
+    "architecture": "Vision Transformer (ViT) with variable tokenization and aggregation",
+    "loss_function": "Latitude-weighted Mean Squared Error (MSE)",
+    "scale": "global",
+    "output_grid": "longitude-latitude",
+    "spatial_resolution": 1.40625,
+    "resolution_unit": "degrees",
+    "forecast_range": ["short", "medium", "seasonal", "climate"],
+    "temporal_resolution": 6,
+    "output_levels": ["surface_level", "pressure_level"],
+    "pressure_levels": [50, 100, 150, 200, 250, 300, 400, 500, 600, 700, 850, 925, 1000],
+    "model_type": "AI-based",
+    "operational_data": false,
+    "open_source": true,
+    "source_license": "MIT",
+    "open_weights": false,
+    "published_year": 2023,
+    "parameters": null,
+    "links": {
+      "code": "https://github.com/microsoft/ClimaX",
+      "paper": "https://arxiv.org/abs/2301.10343",
+      "docs": "https://microsoft.github.io/climax/intro.html"
+    }
+  },
+  {
+    "name": "FengWu",
+    "organisation": "OpenEarthLab",
+    "description": "AI-based global medium-range weather forecasting system using a multi-modal and multi-task learning approach, trained on ERA5 data to predict atmospheric conditions with 0.25\u00b0 resolution.",
+    "training_data": "Trained on ERA5 data from 1979 to 2018.",
     "architecture": "Multi-modal encoder-decoder with cross-modal Transformer and replay buffer mechanism",
-    "training_data": "Trained on ERA5 data from 1979 to 2018."
-  },
-  "physics_driven_details": null,
-  "links": {
-    "code": "https://github.com/OpenEarthLab/FengWu",
-    "paper": "https://arxiv.org/abs/2304.02948"
-  }
-},
-  {
-  "name": "FourCastNet",
-  "organisation": "Nvidia",
-  "description": "Global AI-based weather forecasting model that uses Adaptive Fourier Neural Operators to produce high-resolution short to medium-range forecasts.",
-  "scale": "global",
-  "output_grid": "longitude-latitude",
-  "spatial_resolution": 0.25,
-  "forecast_range": ["short", "medium"],
-  "temporal_resolution": 6,
-  "level_type": "isobars",
-  "levels": 5,
-  "model_type": "AI-based",
-  "code": {
+    "loss_function": "Uncertainty-weighted multi-task loss",
+    "scale": "global",
+    "output_grid": "longitude-latitude",
+    "spatial_resolution": 0.25,
+    "resolution_unit": "degrees",
+    "forecast_range": ["short", "medium", "seasonal", "climate"],
+    "temporal_resolution": 6,
+    "output_levels": ["surface_level", "pressure_level"],
+    "pressure_levels": [1, 2, 3, 5, 7, 10, 20, 30, 50, 70, 100, 150, 200, 250, 300, 400, 500, 600, 700, 850, 925, 1000],
+    "model_type": "AI-based",
+    "operational_data": false,
     "open_source": true,
-    "license": "BSD 3-Clause"
+    "source_license": "MIT",
+    "open_weights": true,
+    "weights_license": null,
+    "published_year": 2023,
+    "parameters": 2702678272,
+    "links": {
+      "code": "https://github.com/OpenEarthLab/FengWu",
+      "paper": "https://arxiv.org/abs/2304.02948"
+    }
   },
-  "published_year": 2022,
-  "data_driven_details": {
-    "parameters": null,
-    "weights": {
-      "open_source": true,
-      "license": "BSD 3-Clause"
-    },
-    "loss_function": "Root Mean Square Error (RMSE) and Anomaly Correlation Coefficient (ACC)",
+  {
+    "name": "FourCastNet",
+    "organisation": "Nvidia",
+    "description": "Global AI-based weather forecasting model that uses Adaptive Fourier Neural Operators to produce high-resolution short to medium-range forecasts.",
+    "training_data": "Trained on ERA5 data from 1979 to 2018.",
     "architecture": "Adaptive Fourier Neural Operator (AFNO) with Vision Transformer (ViT) backbone.",
-    "training_data": "Trained on ERA5 data from 1979 to 2018."
-  },
-  "physics_driven_details": null,
-  "links": {
-    "code": "https://github.com/NVlabs/FourCastNet",
-    "paper": "https://arxiv.org/abs/2202.11214"
-  }
-},
-  {
-  "name": "GraphCast",
-  "organisation": "Google-DeepMind",
-  "description": "AI-based medium-range global weather forecasting with 3D neural networks.",
-  "scale": "global",
-  "output_grid": "longitude-latitude",
-  "spatial_resolution": 0.25,
-  "forecast_range": ["short", "medium"],
-  "temporal_resolution": 6,
-  "level_type": "isobars",
-  "levels": 37,
-  "model_type": "AI-based",
-  "code": {
+    "loss_function": "Root Mean Square Error (RMSE) and Anomaly Correlation Coefficient (ACC)",
+    "scale": "global",
+    "output_grid": "longitude-latitude",
+    "spatial_resolution": 0.25,
+    "resolution_unit": "degrees",
+    "forecast_range": ["short", "medium"],
+    "temporal_resolution": 6,
+    "output_levels": ["surface_level", "pressure_level"],
+    "pressure_levels": [1000, 850, 500, 50],
+    "model_type": "AI-based",
+    "operational_data": false,
     "open_source": true,
-    "license": "APACHE-2.0"
+    "source_license": "BSD 3-Clause",
+    "open_weights": true,
+    "weights_license": "BSD 3-Clause",
+    "published_year": 2022,
+    "parameters": 149443456,
+    "links": {
+      "code": "https://github.com/NVlabs/FourCastNet",
+      "paper": "https://arxiv.org/abs/2202.11214"
+    }
   },
-  "published_year": 2023,
-  "data_driven_details": {
-    "parameters": 36700000,
-    "weights": {
-      "open_source": true,
-      "license": "CC BY-NC-SA 4.0"
-    },
-    "loss_function": "Mean Squared Error (MSE)",
+  {
+    "name": "GraphCast",
+    "organisation": "Google-DeepMind",
+    "description": "AI-based medium-range global weather forecasting with 3D neural networks.",
+    "training_data": "Trained on ERA5 data from 1979 to 2017, covering 227 weather variables across 37 pressure levels.",
     "architecture": "Graph Neural Network (GNN) in an encode-process-decode configuration with a multi-mesh graph representation.",
-    "training_data": "Trained on ERA5 data from 1979 to 2017, covering 227 weather variables across 37 pressure levels."
-  },
-  "physics_driven_details": null,
-  "links": {
-    "code": "https://github.com/deepmind/graphcast",
-    "paper": "https://arxiv.org/abs/2212.12794",
-    "blog": "https://deepmind.google/discover/blog/graphcast-ai-model-for-faster-and-more-accurate-global-weather-forecasting/"
-  }
-},
-  {
-  "name": "Pangu-Weather",
-  "organisation": "Huawei",
-  "description": "AI-based global weather forecasting system that uses a 3D Earth-specific transformer architecture to provide short to medium-range forecasts.",
-  "scale": "global",
-  "output_grid": "longitude-latitude",
-  "spatial_resolution": 0.25,
-  "forecast_range": ["short", "medium"],
-  "temporal_resolution": 1,
-  "level_type": "isobars",
-  "levels": 13,
-  "model_type": "AI-based",
-  "code": {
+    "loss_function": "Mean Squared Error (MSE)",
+    "scale": "global",
+    "output_grid": "longitude-latitude",
+    "spatial_resolution": 0.25,
+    "resolution_unit": "degrees",
+    "forecast_range": ["short", "medium"],
+    "temporal_resolution": 6,
+    "output_levels": ["surface_level", "pressure_level"],
+    "pressure_levels": [1, 2, 3, 5, 7, 10, 20, 30, 50, 70, 100, 125, 150, 175, 200, 225, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 775, 800, 825, 850, 875, 900, 925, 950, 975, 1000],
+    "model_type": "AI-based",
+    "operational_data": false,
     "open_source": true,
-    "license": "CC BY-NC-SA 4.0"
+    "source_license": "APACHE-2.0",
+    "open_weights": true,
+    "weights_license": "CC BY-NC-SA 4.0",
+    "published_year": 2023,
+    "parameters": 36700000,
+    "links": {
+      "code": "https://github.com/deepmind/graphcast",
+      "paper": "https://arxiv.org/abs/2212.12794",
+      "blog": "https://deepmind.google/discover/blog/graphcast-ai-model-for-faster-and-more-accurate-global-weather-forecasting/"
+    }
   },
-  "published_year": 2022,
-  "data_driven_details": {
-    "parameters": 256000000,
-    "weights": {
-      "open_source": true,
-      "license": "CC BY-NC-SA 4.0"
-    },
-    "loss_function": "Latitude-weighted Root Mean Square Error (RMSE) and Anomaly Correlation Coefficient (ACC)",
+  {
+    "name": "Pangu-Weather",
+    "organisation": "Huawei",
+    "description": "AI-based global weather forecasting system that uses a 3D Earth-specific transformer architecture to provide short to medium-range forecasts.",
+    "training_data": "Trained on 43 years of global hourly data from the ERA5 reanalysis dataset, focusing on five upper-air atmospheric variables and four surface weather variables across 13 pressure levels.",
     "architecture": "3D Earth-specific transformer (3DEST) with hierarchical temporal aggregation",
-    "training_data": "Trained on 43 years of global hourly data from the ERA5 reanalysis dataset, focusing on five upper-air atmospheric variables and four surface weather variables across 13 pressure levels."
+    "loss_function": "Latitude-weighted Root Mean Square Error (RMSE) and Anomaly Correlation Coefficient (ACC)",
+    "scale": "global",
+    "output_grid": "longitude-latitude",
+    "spatial_resolution": 0.25,
+    "resolution_unit": "degrees",
+    "forecast_range": ["short", "medium"],
+    "temporal_resolution": 6,
+    "output_levels": ["surface_level", "pressure_level"],
+    "pressure_levels": [50, 100, 150, 200, 250, 300, 400, 500, 600, 700, 850, 925, 1000],
+    "model_type": "AI-based",
+    "operational_data": false,
+    "open_source": true,
+    "source_license": "CC BY-NC-SA 4.0",
+    "open_weights": true,
+    "weights_license": "CC BY-NC-SA 4.0",
+    "published_year": 2022,
+    "parameters": 255859969,
+    "links": {
+      "code": "https://github.com/198808xc/Pangu-Weather",
+      "paper": "https://arxiv.org/abs/2211.02556"
+    }
   },
-  "physics_driven_details": null,
-  "links": {
-    "code": "https://github.com/tpys/FuXi",
-    "paper": "https://arxiv.org/abs/2211.02556"
-  }
-}
+  {
+    "name": "MET Norway",
+    "organisation": "MET Norway",
+    "description": "A regional data-driven weather model with a global stretched-grid architecture, focusing on high-resolution forecasting for the Nordics, while maintaining lower resolution globally.",
+    "training_data": "Pre-trained on 43 years of global ERA5 data at 31 km resolution, with further refinement using 3.3 years of 2.5 km resolution operational analyses from the MetCoOp Ensemble Prediction System (MEPS).",
+    "architecture": "Graph Neural Network (GNN) with encoder-processor-decoder architecture using a stretched-grid configuration for higher resolution over regional areas.",
+    "loss_function": "Squared Error with per-variable weights",
+    "scale": "global",
+    "output_grid": "longitude-latitude",
+    "spatial_resolution": 2.5,
+    "resolution_unit": "km",
+    "forecast_range": ["short"],
+    "temporal_resolution": 6,
+    "output_levels": ["surface_level", "pressure_level"],
+    "pressure_levels": [50, 100, 150, 200, 250, 300, 400, 500, 700, 800, 850, 925, 1000],
+    "model_type": "AI-based",
+    "operational_data": false,
+    "open_source": false,
+    "open_weights": false,
+    "published_year": 2024,
+    "parameters": 246000000,
+    "links": {
+      "paper": "https://arxiv.org/abs/2409.02891"
+    }
+  }  
 ]

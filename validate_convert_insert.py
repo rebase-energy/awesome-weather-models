@@ -1,6 +1,18 @@
 import json
+from collections import OrderedDict
 import jsonschema
-from jsonschema import validate
+
+def validate_table(data, schema):
+    for entry in data:
+        try:
+            jsonschema.validate(instance=entry, schema=schema)
+            print(f"JSON data is valid for model: {entry['name']}.")
+        except jsonschema.exceptions.ValidationError as e:
+            # Print the relevant information
+            if 'name' in e.instance:
+                print(f"JSON validation error in item with name: {e.instance['name']}")
+            # Re-raise the exception to stop the execution
+            raise e
 
 def sort_items_alphabetically(data): 
     print("Sorting items by name alphabetically.")
@@ -12,30 +24,11 @@ def sort_keys(data, schema):
     order = list(schema["properties"].keys())
     # Create a new dictionary with keys in the specified order
     sorted_data = {key: data[key] for key in order if key in data}
-    # Add any keys not in the order to the end, sorted alphabetically
-    remaining_keys = sorted(set(data.keys()) - set(order))
-    for key in remaining_keys:
-        sorted_data[key] = data[key]
 
     return sorted_data
 
-def validate_table(data, schema):
-    for entry in data:
-        try:
-            validate(instance=entry, schema=schema)
-            print("JSON data is valid.")
-        except jsonschema.exceptions.ValidationError as e:
-            # Print the relevant information
-            if 'name' in e.instance:
-                print(f"JSON validation error in item with name: {e.instance['name']}")
-            # Re-raise the exception to stop the execution
-            raise
-
-    #check_fields(data, fields)
 
     
-    return data
-
 # Function to convert JSON data to a Markdown table
 def convert_table(json_data, mapping, table_name):
     # Extracting headers

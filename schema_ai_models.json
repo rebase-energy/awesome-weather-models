@@ -50,8 +50,13 @@
 		},
 		"spatial_resolution": {
 			"type": "number",
-			"description": "Spatial resolution of the model in degrees.",
+			"description": "Numberical value of the spatial resolution.",
 			"minimum": 0
+		},
+		"resolution_unit": {
+			"type": "string",
+			"enum": ["km", "degrees"],
+			"description": "The unit of the resolution, either 'km' or 'degrees'."
 		},
 		"forecast_range": {
 			"type": "array",
@@ -101,12 +106,12 @@
 			"description": "Type of model used for weather or climate forecasting.",
 			"enum": ["AI-based", "physics-based", "hybrid"]
 		},
-		"open_data": {
+		"operational_data": {
 			"type": "boolean",
-			"description": "Whether the model output data is provided as open data."
+			"description": "Whether the operational model output data is provided as open data."
 		},
 		"data_license": {
-			"type": "string",
+			"type": ["string", "null"],
 			"description": "License under which the model output data is provided."
 		},
 		"open_source": {
@@ -114,7 +119,7 @@
 			"description": "Whether the model source code is open source."
 		},
 		"source_license": {
-			"type": "string",
+			"type": ["string", "null"],
 			"description": "License under which the model source code is provided."
 		},
 		"open_weights": {
@@ -122,7 +127,7 @@
 			"description": "Whether the model weights are provided as open data."
 		},
 		"weights_license": {
-			"type": "string",
+			"type": ["string", "null"],
 			"description": "License under which the model weights are provided."
 		},
 		"parameters": {
@@ -169,11 +174,12 @@
 		"scale",
 		"output_grid",
 		"spatial_resolution",
+		"resolution_unit",
 		"forecast_range",
 		"temporal_resolution",
 		"output_levels",
 		"model_type",
-		"open_data",
+		"operational_data",
 		"open_source",
 		"open_weights",
 		"parameters",
@@ -199,7 +205,7 @@
     },
 		{
       "if": {
-        "properties": { "open_data": { "const": true } }
+        "properties": { "operational_data": { "const": true } }
       },
       "then": {
         "required": ["data_license"]
