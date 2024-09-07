@@ -115,7 +115,7 @@ def convert_string(old_list):
 
     return new_list
 
-def insert_table(source_file="model_table.md", read_file="README_no_table.md", target_file="README.md", placeholder="<!-- table_placeholder -->"):
+def insert_table(source_file, read_file="README_no_table.md", target_file="README.md", placeholder="<!-- table_placeholder -->"):
     with open(source_file, 'r') as f:
         table_content = f.read()
 
@@ -152,4 +152,4 @@ if __name__ == "__main__":
     convert_table(data_ai_models, "ai_models.md")
 
     # Insert the Markdown table into a README file
-    insert_table()
+    insert_table("ai_models.md")
