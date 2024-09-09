@@ -59,7 +59,7 @@ def write_custom_json(data, name, indent=2):
         f.write(output_json)
 
 # Function to convert JSON data to a Markdown table
-def convert_table(json_data, table_name):
+def convert_table(json_data, mapping, table_name):
     # Extracting headers
     headers = ["name", "description", "open_source", "links"]
     alignments = {"name": ":---", "description": ":---", "open_source": ":---:", "links": ":---:"}
@@ -78,7 +78,6 @@ def convert_table(json_data, table_name):
         row = "|"
         missing_keys = [key for key in headers if key not in entry.keys()]
         if missing_keys:
-            print(missing_keys)
             raise ValueError(f"Error in element at index {idx_entry}: Missing keys {missing_keys}")
         
         for header in include_headers:
@@ -86,11 +85,8 @@ def convert_table(json_data, table_name):
                 row = row + "`" + str(entry[header]) + "`"
             if header == "description":
                 row = row + str(entry[header])
-            if header == "open_source":
-                if entry[header] == True:
-                    row = row + "Yes"
-                else:
-                    row = row + "No"
+            if header in ["operational_data", "open_source", "open_weights"]:
+                row = row + mapping[str(entry[header])]
             if header in ["links"]:
                 for idx_key, key in enumerate(entry[header]):
                     row = row + "[[" + key + "]]" + "(" + entry[header][key] + ")" 
@@ -149,7 +145,7 @@ if __name__ == "__main__":
     ai_models_json = write_custom_json(data_ai_models, "data_ai_models.json", indent=2)
 
     # Convert JSON to Markdown table
-    convert_table(data_ai_models, "ai_models.md")
+    convert_table(data_ai_models, mapping, "ai_models.md")
 
     # Insert the Markdown table into a README file
     insert_table("ai_models.md")
