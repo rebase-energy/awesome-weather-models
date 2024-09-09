@@ -64,7 +64,9 @@ def convert_table(json_data, mapping, table_name):
     headers = ["name", "organization", "description", "open_source", "links"]
     alignments = {"name": ":---", "organization": ":---", "description": ":---", "operational_data": ":---:", "open_source": ":---:", "open_weights": ":---:", "links": ":---:"}
 
-    include_headers = ["name", "organization", "description", "operational_data", "open_source", "open_weights", "links"]
+    include_headers = ["name", "organization", "operational_data", "open_source", "open_weights", "links"]
+    #include_headers = ["name", "organization", "description", "operational_data", "open_source", "open_weights", "links"]
+
     alignments = [alignments[header] for header in include_headers]
 
     display_headers = convert_string(include_headers)
