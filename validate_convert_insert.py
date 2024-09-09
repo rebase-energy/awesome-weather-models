@@ -62,9 +62,9 @@ def write_custom_json(data, name, indent=2):
 def convert_table(json_data, mapping, table_name):
     # Extracting headers
     headers = ["name", "description", "open_source", "links"]
-    alignments = {"name": ":---", "description": ":---", "open_source": ":---:", "links": ":---:"}
+    alignments = {"name": ":---", "description": ":---", "operational_data": ":---:", "open_source": ":---:", "open_weights": ":---:", "links": ":---:"}
 
-    include_headers = ["name", "description", "open_source", "links"]
+    include_headers = ["name", "description", "operational_data", "open_source", "open_weights", "links"]
     alignments = [alignments[header] for header in include_headers]
 
     display_headers = convert_string(include_headers)
