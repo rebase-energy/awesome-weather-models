@@ -83,7 +83,7 @@ def convert_table(json_data, mapping, table_name):
         for header in include_headers:
             if header == "name":
                 row = row + "`" + str(entry[header]) + "`"
-            if header == ["description", "organization"]:
+            if header in ["description", "organization"]:
                 row = row + str(entry[header])
             if header in ["operational_data", "open_source", "open_weights"]:
                 row = row + mapping[str(entry[header])] 
