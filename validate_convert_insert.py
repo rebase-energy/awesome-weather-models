@@ -59,14 +59,15 @@ def write_custom_json(data, name, indent=2):
         f.write(output_json)
 
 # Function to convert JSON data to a Markdown table
-def convert_table(json_data, mapping, table_name):
+def convert_table(json_data, mapping, line_info, table_name):
     # Extracting headers
     headers = ["name", "organization", "description", "open_source", "links"]
     alignments = {"name": ":---", "organization": ":---", "description": ":---", "operational_data": ":---:", "open_source": ":---:", "open_weights": ":---:", "links": ":---:"}
 
     include_headers = ["name", "organization", "operational_data", "open_source", "open_weights", "links"]
     #include_headers = ["name", "organization", "description", "operational_data", "open_source", "open_weights", "links"]
-
+    
+    permalink = "https://github.com/rebase-energy/awesome-weather-models/blob/a86f37f003e0e53a3035228e3eee0d7bbec8c26e/data_ai_models.json#"
     alignments = [alignments[header] for header in include_headers]
 
     display_headers = convert_string(include_headers)
@@ -84,7 +85,7 @@ def convert_table(json_data, mapping, table_name):
         
         for header in include_headers:
             if header == "name":
-                row = row + "`" + str(entry[header]) + "`"
+                row = row + "[`" + str(entry[header]) + "`](" + permalink + f"L{line_info[entry[header]][0]}-L{line_info[entry[header]][1]})"
             if header in ["description", "organization"]:
                 row = row + str(entry[header])
             if header in ["operational_data", "open_source", "open_weights"]:
@@ -105,6 +106,48 @@ def convert_table(json_data, mapping, table_name):
     # Save the Markdown table to a file
     with open(table_name, 'w') as file:
         file.write(markdown_table)
+
+def extract_outermost_bracket_lines(json_file_path):
+    with open(json_file_path, 'r') as f:
+        lines = f.readlines()
+
+    outer_object_start = None  # Stores the line number of the outermost opening bracket
+    outer_object_end = None    # Stores the line number of the outermost closing bracket
+    inside_outer_object = False  # Flag to indicate when we are inside the outer object
+
+    line_numbers = {}  # Dictionary to hold {name: [opening_line, closing_line]}
+    current_object_name = None
+
+    # Loop through each line and check for outer brackets
+    for line_num, line in enumerate(lines, start=1):
+        stripped_line = line.strip()
+        # Detect outermost opening bracket
+        if "{" in stripped_line and not inside_outer_object:
+            outer_object_start = line_num
+            inside_outer_object = True
+            continue
+
+        # Look for the first key (object name) after the outermost opening bracket
+        if inside_outer_object and "name" in stripped_line:
+            key = stripped_line.split(":")[1].split('"')[1]
+
+            # First key encountered after the opening bracket is the name
+            if current_object_name is None:
+                current_object_name = key
+
+        # Detect the outermost closing bracket
+        if "}" in stripped_line and inside_outer_object:
+            outer_object_end = line_num
+            inside_outer_object = False
+
+            # Store the line numbers in the dictionary and reset
+            if current_object_name:
+                line_numbers[current_object_name] = [outer_object_start, outer_object_end]
+                current_object_name = None
+                outer_object_start = None
+                outer_object_end = None
+
+    return line_numbers
 
 def convert_string(old_list): 
     new_list = []
@@ -149,7 +192,8 @@ if __name__ == "__main__":
     ai_models_json = write_custom_json(data_ai_models, "data_ai_models.json", indent=2)
 
     # Convert JSON to Markdown table
-    convert_table(data_ai_models, mapping, "ai_models.md")
+    line_info = extract_outermost_bracket_lines("data_ai_models.json")
+    convert_table(data_ai_models, mapping, line_info, "ai_models.md")
 
     # Insert the Markdown table into a README file
     insert_table("ai_models.md")
