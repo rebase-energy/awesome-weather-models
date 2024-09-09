@@ -88,7 +88,7 @@ def convert_table(json_data, mapping, table_name):
             if header in ["operational_data", "open_source", "open_weights"]:
                 row = row + mapping[str(entry[header])] 
                 if entry[header]:
-                    row = row + " " + str(entry[header.split("_")[1]+"_license"])
+                    row = row + "<br>" + str(entry[header.split("_")[1]+"_license"])
             if header in ["links"]:
                 for idx_key, key in enumerate(entry[header]):
                     row = row + "[[" + key + "]]" + "(" + entry[header][key] + ")" 
