@@ -1,7 +1,7 @@
 [
   {
   "name": "AIFS",
-  "organisation": "ECMWF",
+  "organization": "ECMWF",
   "description": "AIFS is an AI-based global weather forecasting model that uses a graph neural network (GNN) with a transformer-based processor to produce medium-range forecasts.",
   "training_data": "Trained on ERA5 reanalysis data and ECMWF\u2019s operational NWP analyses, covering a wide range of atmospheric and surface variables.",
   "architecture": "Graph Neural Network (GNN) with a sliding window transformer processor, utilizing a pre-norm transformer with shifted window attention and GELU activation.",
@@ -28,7 +28,7 @@
 },
   {
   "name": "ARCHESWEATHER-L",
-  "organisation": "INRIA",
+  "organization": "INRIA",
   "description": "AI-based weather forecasting model using a transformer architecture with Cross-Level Attention for efficient global weather prediction.",
   "training_data": "Trained on ERA5 data regridded to 1.5\u00ba resolution from 1979 to 2018; fine-tuned on 2007-2018 data.",
   "architecture": "3D Swin U-Net transformer with Cross-Level Attention and adaptive Layer Normalization.",
@@ -56,7 +56,7 @@
 },
   {
   "name": "ARCHESWEATHER-M",
-  "organisation": "INRIA",
+  "organization": "INRIA",
   "description": "AI-based weather forecasting model using a transformer architecture with Cross-Level Attention for efficient global weather prediction.",
   "training_data": "Trained on ERA5 data regridded to 1.5\u00ba resolution from 1979 to 2018; fine-tuned on 2007-2018 data.",
   "architecture": "3D Swin U-Net transformer with Cross-Level Attention and adaptive Layer Normalization.",
@@ -84,7 +84,7 @@
 },
   {
   "name": "ARCHESWEATHER-S",
-  "organisation": "INRIA",
+  "organization": "INRIA",
   "description": "AI-based weather forecasting model using a transformer architecture with Cross-Level Attention for efficient global weather prediction.",
   "training_data": "Trained on ERA5 data regridded to 1.5\u00ba resolution from 1979 to 2018; fine-tuned on 2007-2018 data.",
   "architecture": "3D Swin U-Net transformer with Cross-Level Attention and adaptive Layer Normalization.",
@@ -112,7 +112,7 @@
 },
   {
   "name": "Aurora",
-  "organisation": "Microsoft",
+  "organization": "Microsoft",
   "description": "Aurora is an AI-based model that generates global weather and air pollution forecasts. It utilizes 3D Swin Transformer architecture and is pre-trained on diverse atmospheric data.",
   "training_data": "Pre-trained on a mixture of ERA5, CMCC, IFS-HR, HRES Forecasts, GFS Analysis, and GFS Forecasts data.",
   "architecture": "3D Swin Transformer with 3D Perceiver-based encoders and decoders that uses an icosahedral internal grid.",
@@ -142,7 +142,7 @@
 },
   {
   "name": "ClimaX-H",
-  "organisation": "Microsoft",
+  "organization": "Microsoft",
   "description": "ClimaX high resolution foundation model for weather forecasting to and climate projections, using a vision transformer architecture.",
   "training_data": "Pretrained on CMIP6 climate datasets and fine-tuned on ERA5 data for weather forecasting and climate tasks.",
   "architecture": "Vision Transformer (ViT) with variable tokenization and aggregation",
@@ -170,7 +170,7 @@
 },
   {
   "name": "ClimaX-L",
-  "organisation": "Microsoft",
+  "organization": "Microsoft",
   "description": "ClimaX low resolution foundation model for weather forecasting to and climate projections, using a vision transformer architecture.",
   "training_data": "Pretrained on CMIP6 climate datasets and fine-tuned on ERA5 data for weather forecasting and climate tasks.",
   "architecture": "Vision Transformer (ViT) with variable tokenization and aggregation",
@@ -198,7 +198,7 @@
 },
   {
   "name": "FengWu",
-  "organisation": "OpenEarthLab",
+  "organization": "OpenEarthLab",
   "description": "AI-based global medium-range weather forecasting system using a multi-modal and multi-task learning approach, trained on ERA5 data to predict atmospheric conditions with 0.25\u00b0 resolution.",
   "training_data": "Trained on ERA5 data from 1979 to 2018.",
   "architecture": "Multi-modal encoder-decoder with cross-modal Transformer and replay buffer mechanism",
@@ -226,7 +226,7 @@
 },
   {
   "name": "FourCastNet",
-  "organisation": "Nvidia",
+  "organization": "Nvidia",
   "description": "Global AI-based weather forecasting model that uses Adaptive Fourier Neural Operators to produce high-resolution short to medium-range forecasts.",
   "training_data": "Trained on ERA5 data from 1979 to 2018.",
   "architecture": "Adaptive Fourier Neural Operator (AFNO) with Vision Transformer (ViT) backbone.",
@@ -254,7 +254,7 @@
 },
   {
   "name": "GraphCast",
-  "organisation": "Google-DeepMind",
+  "organization": "Google-DeepMind",
   "description": "AI-based medium-range global weather forecasting with 3D neural networks.",
   "training_data": "Trained on ERA5 data from 1979 to 2017, covering 227 weather variables across 37 pressure levels.",
   "architecture": "Graph Neural Network (GNN) in an encode-process-decode configuration with a multi-mesh graph representation.",
@@ -283,7 +283,7 @@
 },
   {
   "name": "MET Norway",
-  "organisation": "MET Norway",
+  "organization": "MET Norway",
   "description": "A regional data-driven weather model with a global stretched-grid architecture, focusing on high-resolution forecasting for the Nordics, while maintaining lower resolution globally.",
   "training_data": "Pre-trained on 43 years of global ERA5 data at 31 km resolution, with further refinement using 3.3 years of 2.5 km resolution operational analyses from the MetCoOp Ensemble Prediction System (MEPS).",
   "architecture": "Graph Neural Network (GNN) with encoder-processor-decoder architecture using a stretched-grid configuration for higher resolution over regional areas.",
@@ -308,7 +308,7 @@
 },
   {
   "name": "Pangu-Weather",
-  "organisation": "Huawei",
+  "organization": "Huawei",
   "description": "AI-based global weather forecasting system that uses a 3D Earth-specific transformer architecture to provide short to medium-range forecasts.",
   "training_data": "Trained on 43 years of global hourly data from the ERA5 reanalysis dataset, focusing on five upper-air atmospheric variables and four surface weather variables across 13 pressure levels.",
   "architecture": "3D Earth-specific transformer (3DEST) with hierarchical temporal aggregation",

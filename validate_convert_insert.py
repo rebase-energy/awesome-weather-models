@@ -61,10 +61,10 @@ def write_custom_json(data, name, indent=2):
 # Function to convert JSON data to a Markdown table
 def convert_table(json_data, mapping, table_name):
     # Extracting headers
-    headers = ["name", "description", "open_source", "links"]
-    alignments = {"name": ":---", "description": ":---", "operational_data": ":---:", "open_source": ":---:", "open_weights": ":---:", "links": ":---:"}
+    headers = ["name", "organization", "description", "open_source", "links"]
+    alignments = {"name": ":---", "organization": ":---", "description": ":---", "operational_data": ":---:", "open_source": ":---:", "open_weights": ":---:", "links": ":---:"}
 
-    include_headers = ["name", "description", "operational_data", "open_source", "open_weights", "links"]
+    include_headers = ["name", "organization", "description", "operational_data", "open_source", "open_weights", "links"]
     alignments = [alignments[header] for header in include_headers]
 
     display_headers = convert_string(include_headers)
@@ -83,7 +83,7 @@ def convert_table(json_data, mapping, table_name):
         for header in include_headers:
             if header == "name":
                 row = row + "`" + str(entry[header]) + "`"
-            if header == "description":
+            if header == ["description", "organization"]:
                 row = row + str(entry[header])
             if header in ["operational_data", "open_source", "open_weights"]:
                 row = row + mapping[str(entry[header])] 

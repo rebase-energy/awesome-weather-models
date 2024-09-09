@@ -8,9 +8,9 @@
 			"minLength": 1,
 			"maxLength": 25
 		},
-		"organisation": {
+		"organization": {
 			"type": "string",
-			"description": "Name of the organisation that developed the model.",
+			"description": "Name of the organization that developed the model.",
 			"minLength": 1,
 			"maxLength": 25
 		},
@@ -166,7 +166,7 @@
   },
 	"required": [
 		"name",
-		"organisation",
+		"organization",
 		"description",
 		"training_data",
 		"architecture",
