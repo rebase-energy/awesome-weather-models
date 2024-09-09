@@ -23,7 +23,7 @@
   "published_year": 2024,
   "links": {
     "paper": "https://arxiv.org/abs/2406.01465",
-    "website": "https://www.ecmwf.int/en/forecasts/dataset/aifs-machine-learning-data"
+    "access": "https://www.ecmwf.int/en/forecasts/dataset/aifs-machine-learning-data"
   }
 },
   {
@@ -51,8 +51,7 @@
   "published_year": 2024,
   "links": {
     "code": "https://github.com/gcouairon/ArchesWeather",
-    "paper": "https://arxiv.org/abs/2405.14527",
-    "website": "https://www.ecmwf.int/en/forecasts/dataset/aifs-machine-learning-data"
+    "paper": "https://arxiv.org/abs/2405.14527"
   }
 },
   {
@@ -80,8 +79,7 @@
   "published_year": 2024,
   "links": {
     "code": "https://github.com/gcouairon/ArchesWeather",
-    "paper": "https://arxiv.org/abs/2405.14527",
-    "website": "https://www.ecmwf.int/en/forecasts/dataset/aifs-machine-learning-data"
+    "paper": "https://arxiv.org/abs/2405.14527"
   }
 },
   {
@@ -109,8 +107,7 @@
   "published_year": 2024,
   "links": {
     "code": "https://github.com/gcouairon/ArchesWeather",
-    "paper": "https://arxiv.org/abs/2405.14527",
-    "website": "https://www.ecmwf.int/en/forecasts/dataset/aifs-machine-learning-data"
+    "paper": "https://arxiv.org/abs/2405.14527"
   }
 },
   {
