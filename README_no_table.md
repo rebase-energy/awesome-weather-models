@@ -12,11 +12,15 @@
 This page provide a catalogue and categorization of AI-based weather forecasting models. The aim is that this page will enable discovery and comparison of the different available model options. 
 
 ## Weather Models
-The weather models are categorized according meta data found in the [JSON schema](https://json-schema.org/) specification ([schema_ai_models.json](https://github.com/rebase-energy/awesome-weather-models/blob/main/schema_ai_models.json)). Below is a table in alphabetical order extracted from the full categorization providing name, description and if it is provided as an open model. Click the link of the model name to see the full model categorization. 
+The weather models are categorized according metadata found in the [JSON schema](https://json-schema.org/) specification ([schema_ai_models.json](https://github.com/rebase-energy/awesome-weather-models/blob/main/schema_ai_models.json)). The table below (in alphabetical order) is extracted from the full categorization will columns defined as: 
 
-* **Operational Data**: Forecast data from the model is provided at an operational basis.
-* **Open Source**: The source code is provided as open source. 
-* **Open Weights**: The model weights are provided as open weights. 
+* **Name**: Name of the weather model. 
+* **Organization**: Organization that developed the weather model. 
+* **Operational Data**: If forecast data from the model is provided at an operational basis.
+* **Open Source**: If the source code is provided as open source. 
+* **Open Weights**: If the model weights are provided as open weights. 
+
+Click the link of the model name to see the full model categorization. 
 
 <!-- table_placeholder -->
 

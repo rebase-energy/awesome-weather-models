@@ -85,7 +85,9 @@ def convert_table(json_data, mapping, line_info, table_name):
         
         for header in include_headers:
             if header == "name":
-                row = row + "[`" + str(entry[header]) + "`](" + permalink + f"L{line_info[entry[header]][0]}-L{line_info[entry[header]][1]})"
+                name = entry[header].replace("-", r"\-")
+                link = f"L{line_info[entry[header]][0]}-L{line_info[entry[header]][1]}"
+                row = row + "[`" + name + "`](" + link + ")"
             if header in ["description", "organization"]:
                 row = row + str(entry[header])
             if header in ["operational_data", "open_source", "open_weights"]:
