@@ -67,7 +67,7 @@ def convert_table(json_data, mapping, line_info, table_name):
     include_headers = ["name", "organization", "operational_data", "open_source", "open_weights", "links"]
     #include_headers = ["name", "organization", "description", "operational_data", "open_source", "open_weights", "links"]
     
-    permalink = "https://github.com/rebase-energy/awesome-weather-models/blob/a86f37f003e0e53a3035228e3eee0d7bbec8c26e/data_ai_models.json#"
+    permalink = "https://github.com/rebase-energy/awesome-weather-models/blob/main/data_ai_models.json#"
     alignments = [alignments[header] for header in include_headers]
 
     display_headers = convert_string(include_headers)
