@@ -333,5 +333,34 @@
     "code": "https://github.com/198808xc/Pangu-Weather",
     "paper": "https://arxiv.org/abs/2211.02556"
   }
+},
+  {
+  "name": "Prithvi WxC",
+  "organization": "IBM and NASA",
+  "description": "Prithvi WxC is a 2.3 billion parameter foundation model developed using 160 variables from NASA's MERRA-2 dataset. ",
+  "training_data": "Trained on the MERRA-2 dataset, covering atmospheric data from 1980 to the present with a spatial resolution of 0.5 by 0.625 degrees and a temporal resolution of 3 hours.",
+  "architecture": "Encoder-decoder transformer architecture, inspired by various recent transformer models, designed to handle large token counts and capture both regional and global dependencies.",
+  "loss_function": "Masked reconstruction and forecasting loss with climatology variance",
+  "scale": "global",
+  "output_grid": "cubed-sphere",
+  "spatial_resolution": 0.5,
+  "resolution_unit": "degrees",
+  "forecast_range": ["short", "medium", "seasonal"],
+  "temporal_resolution": 3,
+  "output_levels": ["surface_level", "pressure_level"],
+  "pressure_levels": [48, 109, 150, 208, 245, 288, 412, 525, 600, 700, 850, 925, 970, 985],
+  "model_type": "AI-based",
+  "operational_data": false,
+  "open_source": true,
+  "source_license": "MIT",
+  "open_weights": true,
+  "weights_license": "MIT",
+  "parameters": 2300000000,
+  "published_year": 2024,
+  "links": {
+    "code": "https://github.com/NASA-IMPACT/Prithvi-WxC",
+    "paper": "https://arxiv.org/abs/2409.13598",
+    "weights": "https://huggingface.co/Prithvi-WxC"
+  }
 }
 ]
