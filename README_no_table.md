@@ -30,8 +30,21 @@ Click the link of the model name to see the full model categorization.
 ## How to Contribute? 
 Contributions are much welcome! 
 
-1) Add a model to the list
-2) Update categorization and links
-3) Feedback on categorization/structure to make it more useful
+* Add a model to the list
+* Update categorization and links
+* Feedback on categorization/structure to make it more useful
 
-Feel free to make a PR and we will incorporate it. 
+Feel free to make a PR or issue and we will incorporate it. 
+
+For making PRs, here is how to make changes to the repo: 
+
+1) All updates/changes should be done to the following files: 
+* [`data_ai_models.json`](https://github.com/rebase-energy/awesome-weather-models/blob/main/data_ai_models.json) for updates/changes to model categorization.
+* [`schema_ai_models.json`](https://github.com/rebase-energy/awesome-weather-models/blob/main/schema_ai_models.json) for schema changes.
+* [`README_no_table.md`](https://github.com/rebase-energy/awesome-weather-models/blob/main/README_no_table.md) for changes to the README. 
+
+2) When updates/changes are completed run `python validate_convert_insert.py`. Make sure all JSON validations checks pass. 
+
+3) The files [`ai_model.md`](https://github.com/rebase-energy/awesome-weather-models/blob/main/ai_models.md) and [´README.md´](https://github.com/rebase-energy/awesome-weather-models/blob/main/README.md) will be auto-generated from the script. 
+
+4) Add all the changed and generated files and submit the PR. 
