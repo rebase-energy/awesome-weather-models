@@ -61,13 +61,13 @@ def write_custom_json(data, name, indent=2):
 # Function to convert JSON data to a Markdown table
 def convert_table(json_data, mapping, line_info, table_name):
     # Extracting headers
-    headers = ["name", "organization", "description", "open_source", "links"]
-    alignments = {"name": ":---", "organization": ":---", "description": ":---", "operational_data": ":---:", "open_source": ":---:", "open_weights": ":---:", "links": ":---:"}
+    headers = ["name", "lead_organization", "description", "open_source", "links"]
+    alignments = {"name": ":---", "lead_organization": ":---", "description": ":---", "operational_data": ":---:", "open_source": ":---:", "open_weights": ":---:", "links": ":---:"}
 
-    include_headers = ["name", "organization", "operational_data", "open_source", "open_weights", "links"]
-    #include_headers = ["name", "organization", "description", "operational_data", "open_source", "open_weights", "links"]
+    include_headers = ["name", "lead_organization", "operational_data", "open_source", "open_weights", "links"]
+    #include_headers = ["name", "lead_organization", "description", "operational_data", "open_source", "open_weights", "links"]
     
-    permalink = "https://github.com/rebase-energy/awesome-weather-models/blob/main/data_ai_models.json#"
+    permalink = "https://github.com/rebase-energy/awesome-weather-models/blob/main/data_ai_hybrid_models.json#"
     alignments = [alignments[header] for header in include_headers]
 
     display_headers = convert_string(include_headers)
@@ -88,7 +88,7 @@ def convert_table(json_data, mapping, line_info, table_name):
                 name = entry[header].replace("-", "\u2011")
                 link = permalink + f"L{line_info[entry[header]][0]}-L{line_info[entry[header]][1]+1}"
                 row = row + "[`" + name + "`](" + link + ")"
-            if header in ["description", "organization"]:
+            if header in ["description", "lead_organization"]:
                 row = row + str(entry[header])
             if header in ["operational_data", "open_source", "open_weights"]:
                 row = row + mapping[str(entry[header])] 
@@ -176,26 +176,26 @@ def insert_table(source_file, read_file="README_no_table.md", target_file="READM
 
 if __name__ == "__main__":
     # Read JSON data from a file
-    with open('data_ai_models.json', 'r') as f:
-        data_ai_models = json.load(f)
+    with open('data_ai_hybrid_models.json', 'r') as f:
+        data_ai_hybrid_models = json.load(f)
 
-    with open('schema_ai_models.json', 'r') as f:
-        schema_ai_models = json.load(f)
+    with open('schema_ai_hybrid_models.json', 'r') as f:
+        schema_ai_hybrid_models = json.load(f)
 
     with open('mapping.json', 'r') as f:
         mapping = json.load(f)
 
     # Validate and clean JSON data
-    validate_table(data_ai_models, schema_ai_models)
-    data_ai_models = sort_items_alphabetically(data_ai_models)
-    data_ai_models = sort_keys(data_ai_models, schema_ai_models)
+    validate_table(data_ai_hybrid_models, schema_ai_hybrid_models)
+    data_ai_hybrid_models = sort_items_alphabetically(data_ai_hybrid_models)
+    data_ai_hybrid_models = sort_keys(data_ai_hybrid_models, schema_ai_hybrid_models)
 
     # Write custom JSON file
-    ai_models_json = write_custom_json(data_ai_models, "data_ai_models.json", indent=2)
+    write_custom_json(data_ai_hybrid_models, "data_ai_hybrid_models.json", indent=2)
 
     # Convert JSON to Markdown table
-    line_info = extract_outermost_bracket_lines("data_ai_models.json")
-    convert_table(data_ai_models, mapping, line_info, "ai_models.md")
+    line_info = extract_outermost_bracket_lines("data_ai_hybrid_models.json")
+    convert_table(data_ai_hybrid_models, mapping, line_info, "ai_hybrid_models.md")
 
     # Insert the Markdown table into a README file
-    insert_table("ai_models.md")
+    insert_table("ai_hybrid_models.md")

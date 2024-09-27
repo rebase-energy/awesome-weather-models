@@ -8,17 +8,17 @@
 			"minLength": 1,
 			"maxLength": 25
 		},
-		"organization": {
+		"lead_organization": {
 			"type": "string",
-			"description": "Name of the organization that developed the model.",
+			"description": "Name of the lead organization that developed the model.",
 			"minLength": 1,
-			"maxLength": 25
+			"maxLength": 40
 		},
 		"description": {
 			"type": "string",
 			"description": "Description of the model.",
 			"minLength": 1,
-			"maxLength": 200
+			"maxLength": 300
 		},
 		"training_data": {
 			"type": "string",
@@ -46,7 +46,7 @@
 		"output_grid": {
 			"type": "string",
 			"description": "Type of output grid used by the model.",
-			"enum": ["longitude-latitude", "icosahedral", "cubed-sphere"]
+			"enum": ["longitude-latitude", "icosahedral", "cubed-sphere", "gaussian-grid"]
 		},
 		"spatial_resolution": {
 			"type": "number",
@@ -78,11 +78,11 @@
 			"description": "Specifies which level types are produced as outputs by the model.",
 			"items": {
 				"type": "string",
-				"enum": ["surface_level", "pressure_level", "height_level"]
+				"enum": ["surface_level", "pressure_level", "sigma_level", "height_level"]
 		  },
 			"minItems": 1,
 			"uniqueItems": true
-    },
+    	},
 		"pressure_levels": {
 			"type": "array",
 			"items": {
@@ -91,6 +91,16 @@
 			},
 			"minItems": 1,
 			"description": "List of pressure levels in hPa."
+		},
+		"sigma_levels": {
+			"type": "array",
+			"items": {
+				"type": "number",
+				"minimum": 0,
+				"maximum": 1
+			},
+			"minItems": 1,
+			"description": "List of sigma levels."
 		},
 		"height_levels": {
 			"type": "array",
@@ -172,7 +182,7 @@
   },
 	"required": [
 		"name",
-		"organization",
+		"lead_organization",
 		"description",
 		"training_data",
 		"architecture",
@@ -202,6 +212,14 @@
       }
     },
     {
+		"if": {
+		  "properties": { "output_levels": { "contains": { "const": "sigma_level" } } }
+		},
+		"then": {
+		  "required": ["sigma_levels"]
+		}
+	  },
+	{
       "if": {
         "properties": { "output_levels": { "contains": { "const": "height_level" } } }
       },
@@ -209,7 +227,7 @@
         "required": ["height_levels"]
       }
     },
-		{
+	{
       "if": {
         "properties": { "operational_data": { "const": true } }
       },
