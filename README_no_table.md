@@ -28,15 +28,13 @@ Click the link of the model name to see the full model categorization.
 <!-- table_placeholder -->
 
 ## How to Contribute? 
-Contributions are much welcome! 
+Contributions are much welcome! Make a PR or issue and we will incorporate it. Contributions could for example be: 
 
 * Add a model to the list
 * Update categorization and links
 * Feedback on categorization/structure to make it more useful
 
-Feel free to make a PR or issue and we will incorporate it. 
-
-For making PRs, here is how to make changes to the repo: 
+When making a PR, follow the these steps to make sure your contribution is consistent with this repo structure: 
 
 1) All updates/changes should be done to the following files: 
 * [`data_ai_models.json`](https://github.com/rebase-energy/awesome-weather-models/blob/main/data_ai_models.json) for updates/changes to model categorization.

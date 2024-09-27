@@ -20,7 +20,8 @@
   "open_source": false,
   "open_weights": false,
   "parameters": null,
-  "published_year": 2024,
+  "paper_published": "2024-06-03",
+  "repo_created": null,
   "links": {
     "paper": "https://arxiv.org/abs/2406.01465",
     "access": "https://www.ecmwf.int/en/forecasts/dataset/aifs-machine-learning-data"
@@ -48,7 +49,8 @@
   "open_weights": true,
   "weights_license": "MIT",
   "parameters": 164000000,
-  "published_year": 2024,
+  "paper_published": "2024-05-23",
+  "repo_created": "2024-05-23",
   "links": {
     "code": "https://github.com/gcouairon/ArchesWeather",
     "paper": "https://arxiv.org/abs/2405.14527"
@@ -76,7 +78,8 @@
   "open_weights": true,
   "weights_license": "MIT",
   "parameters": 89000000,
-  "published_year": 2024,
+  "paper_published": "2024-05-23",
+  "repo_created": "2024-05-23",
   "links": {
     "code": "https://github.com/gcouairon/ArchesWeather",
     "paper": "https://arxiv.org/abs/2405.14527"
@@ -104,7 +107,8 @@
   "open_weights": true,
   "weights_license": "MIT",
   "parameters": 49000000,
-  "published_year": 2024,
+  "paper_published": "2024-05-23",
+  "repo_created": "2024-05-23",
   "links": {
     "code": "https://github.com/gcouairon/ArchesWeather",
     "paper": "https://arxiv.org/abs/2405.14527"
@@ -132,7 +136,8 @@
   "open_weights": true,
   "weights_license": "MIT",
   "parameters": 1300000000,
-  "published_year": 2024,
+  "paper_published": "2024-05-20",
+  "repo_created": "2024-07-15",
   "links": {
     "code": "https://github.com/microsoft/aurora",
     "paper": "https://arxiv.org/abs/2405.13063",
@@ -161,7 +166,8 @@
   "source_license": "MIT",
   "open_weights": false,
   "parameters": null,
-  "published_year": 2023,
+  "paper_published": "2024-05-20",
+  "repo_created": "2024-07-15",
   "links": {
     "code": "https://github.com/microsoft/ClimaX",
     "paper": "https://arxiv.org/abs/2301.10343",
@@ -189,7 +195,8 @@
   "source_license": "MIT",
   "open_weights": false,
   "parameters": null,
-  "published_year": 2023,
+  "paper_published": "2024-05-20",
+  "repo_created": "2024-07-15",
   "links": {
     "code": "https://github.com/microsoft/ClimaX",
     "paper": "https://arxiv.org/abs/2301.10343",
@@ -218,7 +225,8 @@
   "open_weights": true,
   "weights_license": null,
   "parameters": 2702678272,
-  "published_year": 2023,
+  "paper_published": "2023-04-06",
+  "repo_created": "2023-07-04",
   "links": {
     "code": "https://github.com/OpenEarthLab/FengWu",
     "paper": "https://arxiv.org/abs/2304.02948"
@@ -246,10 +254,36 @@
   "open_weights": true,
   "weights_license": "BSD 3-Clause",
   "parameters": 149443456,
-  "published_year": 2022,
+  "paper_published": "2022-02-22",
+  "repo_created": "2022-07-07",
   "links": {
     "code": "https://github.com/NVlabs/FourCastNet",
     "paper": "https://arxiv.org/abs/2202.11214"
+  }
+},
+  {
+  "name": "GenCast",
+  "organization": "Google DeepMind",
+  "description": "GenCast is a diffusion-based ensemble weather forecasting model. It generates global 15-day probabilistic forecasts for over 80 surface and atmospheric variables.",
+  "training_data": "Trained on 40 years of ERA5 reanalysis data (1979-2018) with initial conditions from ERA5 Ensemble of Data Assimilations (EDA).",
+  "architecture": "Conditional graph transformer diffusion model with an encoder-decoder neural network.",
+  "loss_function": "Standard diffusion model denoising objective",
+  "scale": "global",
+  "output_grid": "longitude-latitude",
+  "spatial_resolution": 0.25,
+  "resolution_unit": "degrees",
+  "forecast_range": ["medium"],
+  "temporal_resolution": 12,
+  "output_levels": ["surface_level", "pressure_level"],
+  "pressure_levels": [200, 300, 500, 700, 850, 925, 1000],
+  "model_type": "AI-based",
+  "operational_data": false,
+  "open_source": false,
+  "open_weights": false,
+  "parameters": null,
+  "paper_published": "2023-12-25",
+  "links": {
+    "paper": "https://arxiv.org/abs/2312.15796v2"
   }
 },
   {
@@ -274,9 +308,10 @@
   "open_weights": true,
   "weights_license": "CC BY-NC-SA 4.0",
   "parameters": 36700000,
-  "published_year": 2023,
+  "paper_published": "2022-12-24",
+  "repo_created": "2022-07-14",
   "links": {
-    "code": "https://github.com/deepmind/graphcast",
+    "code": "https://github.com/google-deepmind/graphcast",
     "paper": "https://arxiv.org/abs/2212.12794",
     "blog": "https://deepmind.google/discover/blog/graphcast-ai-model-for-faster-and-more-accurate-global-weather-forecasting/"
   }
@@ -301,7 +336,7 @@
   "open_source": false,
   "open_weights": false,
   "parameters": 246000000,
-  "published_year": 2024,
+  "paper_published": "2024-09-04",
   "links": {
     "paper": "https://arxiv.org/abs/2409.02891"
   }
@@ -328,7 +363,8 @@
   "open_weights": true,
   "weights_license": "CC BY-NC-SA 4.0",
   "parameters": 255859969,
-  "published_year": 2022,
+  "paper_published": "2022-11-03",
+  "repo_created": "2023-01-11",
   "links": {
     "code": "https://github.com/198808xc/Pangu-Weather",
     "paper": "https://arxiv.org/abs/2211.02556"
@@ -356,7 +392,8 @@
   "open_weights": true,
   "weights_license": "MIT",
   "parameters": 2300000000,
-  "published_year": 2024,
+  "paper_published": "2024-09-20",
+  "repo_created": "2024-08-30",
   "links": {
     "code": "https://github.com/NASA-IMPACT/Prithvi-WxC",
     "paper": "https://arxiv.org/abs/2409.13598",

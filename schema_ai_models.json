@@ -134,9 +134,15 @@
 			"type": ["integer", "null"],
 			"mininum": 0
 		},
-		"published_year": {
-			"type": "number",
-			"description": "Year in which the model was published."
+		"paper_published": {
+			"type": ["string", "null"],
+			"format": "date",
+			"description": "Date when the arxiv paper was published."
+		},
+		"repo_created": {
+			"type": ["string", "null"],
+			"format": "date",
+			"description": "Date when the code was published."
 		},
 		"links": {
 			"type": "object",
@@ -183,11 +189,11 @@
 		"open_source",
 		"open_weights",
 		"parameters",
-		"published_year"
+		"paper_published"
 	],
 	"additionalProperties": false,
   "allOf": [
-    {
+  	{
       "if": {
         "properties": { "output_levels": { "contains": { "const": "pressure_level" } } }
       },
@@ -226,6 +232,14 @@
       "then": {
         "required": ["weights_license"]
       }
-    }
+    },
+		{
+			"if": {
+				"properties": { "open_source": { "const": true } }
+			},
+			"then": {
+				"required": ["repo_created"]
+			}
+		}
   ]
 }
