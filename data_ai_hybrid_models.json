@@ -262,6 +262,26 @@
   }
 },
   {
+  "name":"GraphDOP",
+  "links": {
+    "paper": ["https://arxiv.org/abs/2412.15687"]
+    } 
+  },
+  {
+  "name": "AIFS-CRPS",
+  "links": {
+    "paper": ["https://arxiv.org/pdf/2412.15832v1"]
+  }
+  },
+  {
+  "name": "ArchesWeatherGen",
+  "links": {
+    "paper": "https://arxiv.org/abs/2412.12971",
+    "code": "https://github.com/INRIA/geoarches"
+  }
+
+  },
+  {
   "name": "GenCast",
   "lead_organization": "Google DeepMind",
   "description": "GenCast is a diffusion-based ensemble weather forecasting model. It generates global 15-day probabilistic forecasts for over 80 surface and atmospheric variables.",
@@ -283,7 +303,11 @@
   "parameters": null,
   "paper_published": "2023-12-25",
   "links": {
-    "paper": "https://arxiv.org/abs/2312.15796v2"
+    "paper": [
+      "https://arxiv.org/abs/2312.15796v2", 
+      "https://www.nature.com/articles/s41586-024-08252-9"
+    ],
+    "code": "https://github.com/google-deepmind/graphcast"
   }
 },
   {
